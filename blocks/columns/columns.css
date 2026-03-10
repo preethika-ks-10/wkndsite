@@ -1,68 +1,75 @@
-/* 1. Wrapper */
-.columns {
-  display: flex !important;
-  justify-content: center !important;
-  padding: 20px 0 !important;
+/* Featured Article Layout */
+ 
+.columns-wrapper {
+  max-width: 1100px; /* Reduces overall width of the block */
+  margin: 0 auto;    /* Centers the block on the page */
+  padding: 0 20px;   /* Optional: adds a little breathing room on the sides */
 }
-
-/* 2. Main Block - This is the key change */
+ 
 .columns > div {
-  display: flex !important;
-  flex-direction: row !important;
-  width: auto !important; /* Let the content define the width */
-  max-width: 850px !important; 
-  margin: 0 auto !important;
-  align-items: stretch !important; /* Keeps the grey box height tied to the image */
-  overflow: hidden !important;
-  background-color: #ededed !important; /* Apply grey to the WHOLE block base */
+  display: grid;
+  grid-template-columns: 60% 40%; /* Changed from 60/40 to 70/30 */
+  align-items: stretch;
+  gap: 0;
+  min-height: 500px; /* Reduces the height (adjust this value as needed) */
 }
-
-/* 3. Image Side - No growing, no shrinking */
-.columns-img-col {
-  flex: 0 1 auto !important; 
-  padding: 0 !important;
-  line-height: 0;
-  background-color: #fff !important; /* Keeps image side clean */
+ 
+/* LEFT IMAGE */
+ 
+.columns > div > div:first-child img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
-
-.columns-img-col img {
-  display: block !important;
-  max-height: 250px !important; /* LIMITS the vertical size of the whole block */
-  width: auto !important;
-  object-fit: contain !important; /* Shows the FULL image */
+ 
+/* RIGHT CONTENT BOX */
+ 
+.columns > div > div:last-child {
+  background: #f2f2f2;
+  padding: 40px; /* Reduced padding from 60px to fit the narrower 30% width */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-
-/* 4. Content Side - Grows to fill the height of the image */
-.columns > div > div:not(.columns-img-col) {
-  flex: 1 1 300px !important; /* Minimum width of 300px for text */
-  background-color: #ededed !important;
-  padding: 30px !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
+ 
+/* FEATURED LABEL */
+ 
+.columns > div > div:last-child p:first-child {
+  font-size: 17px; /* Slightly smaller to match reduced scale */
+  font-weight: 450;
+  margin-bottom: 15px;
 }
-
-/* 5. Typography Fixes to keep it short */
-.columns h2 {
-  font-family: "Georgia", serif !important;
-  font-size: 24px !important;
-  margin-bottom: 8px !important;
-  line-height: 1.1 !important;
+ 
+/* TITLE */
+ 
+.columns > div > div:last-child h2 {
+  font-size: 40px; /* Reduced size to prevent text overflow in 30% column */
+  font-weight: 300;
+  margin-bottom: 15px;
+  line-height: 1.2;
+  font-family: var(--fontFamilySerif);
 }
-
-.columns p {
-  font-size: 10px !important;
-  line-height: 1.4 !important;
-  margin-bottom: 15px !important;
-  /* If the text is too long, it will scroll rather than break the layout */
-  max-height: 150px; 
-  overflow-y: auto;
+ 
+/* DESCRIPTION */
+ 
+.columns > div > div:last-child p {
+  font-size: 15px; /* Slightly smaller for the tighter box */
+  line-height: 1.6;
 }
-
-.columns .button.primary {
-  background-color: #fff200 !important;
-  padding: 10px 20px !important;
-  font-size: 11px !important;
-  font-weight: 700 !important;
-  border-radius: 0 !important;
+ 
+/* BUTTON STYLE */
+ 
+.columns > div > div:last-child a {
+  display: inline-block;
+  align-self: flex-start; /* Ensures button doesn't stretch to full width */
+  margin-top: 20px;
+  background-color: var(--brandPrimary, #ffea00);
+  border-radius: 0;
+  color: var(--textColor, #202020);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 0.8em 2em;
+  text-transform: uppercase;
+  text-decoration: none;
 }
