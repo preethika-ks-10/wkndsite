@@ -2,26 +2,15 @@ export default function decorate(block) {
 
   const rows = [...block.children];
 
-  const logo = rows[0].children[0].textContent;
+  const logo = rows[0]?.children[0]?.textContent || "WKND";
 
-  const nav = [
-    rows[0].children[1].textContent,
-    rows[0].children[2].textContent,
-    rows[0].children[3].textContent,
-    rows[0].children[4].textContent,
-  ];
+  const nav = rows[0] ? [...rows[0].querySelectorAll('p')].slice(1,5).map(p => p.textContent) : [];
 
-  const socialTitle = rows[1].children[0].textContent;
+  const socialTitle = rows[1]?.querySelector('p')?.textContent || "FOLLOW US";
 
-  const social = [
-    rows[1].children[1].textContent,
-    rows[1].children[2].textContent,
-    rows[1].children[3].textContent,
-  ];
-
-  const copyright = rows[2].textContent;
-  const desc1 = rows[3].textContent;
-  const desc2 = rows[4].textContent;
+  const copyright = rows[2]?.textContent || "";
+  const desc1 = rows[3]?.textContent || "";
+  const desc2 = rows[4]?.textContent || "";
 
   block.innerHTML = `
     <div class="footer-top">
