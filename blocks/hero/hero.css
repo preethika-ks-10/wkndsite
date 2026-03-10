@@ -1,37 +1,61 @@
-.hero-container .hero-wrapper {
-  max-width: unset;
-  padding: 0;
-}
-
-.hero {
-  position: relative;
-  padding: 40px 24px;
-  min-height: 300px;
-}
-
-.hero h1 {
+.hero-wrapper{
+  display: flex;
+  align-items: stretch;       /* Keep columns same height */
   max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  color: var(--background-color);
+  margin: auto;
+  padding: 60px 40px;         /* Increase padding for larger hero */
 }
-
-.hero picture {
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  object-fit: cover;
-  box-sizing: border-box;
+ 
+.hero-col{
+  flex: 1;
+  background-color: #f0f0f0;  /* Light grey only for text */
+  padding: 60px 40px;         /* Increase space inside text block */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;    /* Center text vertically */
 }
-
-.hero img {
-  object-fit: cover;
+ 
+.hero-col img{
+  flex: 1;
   width: 100%;
-  height: 100%;
+  height: 100%;               /* Fill column height */
+  object-fit: cover;          /* Cover the column */
+  border-radius: 0;           /* Keep attached to text */
 }
-
-@media (width >= 900px) {
-  .hero {
-    padding: 40px 32px;
-  }
+ 
+.hero-col h2{
+  font-size: 48px;             /* Make heading bigger */
+  margin-bottom: 15px;
+}
+ 
+.hero-col p{
+  line-height: 1.8;            /* Slightly more spacing for readability */
+  font-size: 18px;             /* Make paragraph bigger */
+}
+ 
+.hero-col a{
+  display: inline-block;
+  margin-top: 20px;
+  padding: 15px 30px;          /* Bigger button */
+  background: black;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+ 
+/* Button styling */
+.hero-wrapper .button.primary{
+  display:inline-block;
+  margin-top:15px;
+  padding:10px 20px;
+  background:#ffd800 !important;   /* yellow button */
+  color:#000 !important;           /* black text */
+  text-decoration:none;
+  border:none;
+  font-weight:600;
+}
+ 
+/* Button hover */
+.hero-wrapper .button.primary:hover{
+  background:#ffcc00 !important;
 }

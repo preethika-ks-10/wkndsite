@@ -1,78 +1,142 @@
-.carousel-container{
-  position:relative;
-  width:100%;
-  height:550px;
-  overflow:hidden;
+.carousel-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
 }
-
-.carousel-slide{
-  position:absolute;
-  width:100%;
-  height:100%;
-  background-size:cover;
-  background-position:center;
-  opacity:0;
-  transition:opacity 0.6s ease;
+ 
+.carousel-track {
+  display: flex;
+  transition: transform 0.6s ease-in-out;
 }
-
-.carousel-slide.active{
-  opacity:1;
+ 
+.carousel-slide {
+  flex: 0 0 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  /* This height controls the overall "bigness" of the hero area */
+  height: 600px;
 }
-
-.carousel-content{
-  position:absolute;
-  bottom:80px;
-  left:120px;
-  background:white;
-  padding:40px;
-  max-width:600px;
+ 
+/* Updated Image Styling for Full Width and Background Effect */
+.carousel-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Sits behind the content */
 }
-
-.carousel-content h2{
-  margin:0 0 10px;
+ 
+.carousel-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures image covers area without stretching */
+  object-position: center;
+  display: block;
 }
-
-.carousel-content button{
-  margin-top:15px;
-  background:#ffd600;
-  border:none;
-  padding:12px 20px;
-  font-weight:bold;
-  cursor:pointer;
+ 
+/* Keeping your exact Content Box style */
+.carousel-content {
+  position: relative;
+  width: calc(100% - 90px);
+  margin: 0 auto; /* Removed the negative margin for a cleaner stack */
+  background: #fff;
+  padding: 10px 30px 20px;
+  box-sizing: border-box;
+  z-index: 3;
 }
-
-.carousel-prev,
-.carousel-next{
-  position:absolute;
-  bottom:40px;
-  right:80px;
-  background:none;
-  border:none;
-  font-size:28px;
-  cursor:pointer;
+ 
+.carousel-content h2 {
+  font-family: "Georgia", serif;
+  font-size: 38px;
+  margin: 0 0 10px 0;
+  font-weight: 500;
+  color: #222;
 }
-
-.carousel-prev{
-  right:120px;
+ 
+.carousel-content p a {
+  background-color: var(--brandPrimary, #ffea00);
+  border-radius: var(--buttonBorderRadius, 0);
+  color: var(--textColor, #202020);
+  float: left;
+  font-size: var(--fontSizeSmall, 14px);
+  font-weight: var(--fontWeightBold, 600);
+  padding: 1em 2.5em;
+  text-transform: uppercase;
 }
-
-.carousel-dots{
-  position:absolute;
-  bottom:30px;
-  left:50%;
-  transform:translateX(-50%);
+ 
+/* --- Keeping your exact Navigation Styling --- */
+.carousel-nav-wrapper {
+  position: relative;
+  width: 100%;
+  height: 60px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
-.carousel-dots span{
-  display:inline-block;
-  width:10px;
-  height:10px;
-  background:#ccc;
-  border-radius:50%;
-  margin:5px;
-  cursor:pointer;
+ 
+.carousel-dots {
+  display: flex;
+  gap: 12px;
 }
-
-.carousel-dots span.active{
-  background:#000;
+ 
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  background: #bbb;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s;
 }
+ 
+.carousel-dot.active {
+  background: #000;
+  transform: scale(1.2);
+}
+ 
+.carousel-arrows {
+  position: absolute;
+  right: 40px;
+  display: flex;
+  gap: 20px;
+}
+ 
+.carousel-btn {
+  background: none;
+  border: none;
+  font-size: 32px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #000;
+  line-height: 1;
+  padding: 0;
+  transition: transform 0.2s;
+}
+ 
+.carousel-btn:hover {
+  transform: scale(1.1);
+}
+ 
+@media (max-width: 768px) {
+  .carousel-slide {
+    height: 400px; /* Shorter for mobile */
+  }
+  .carousel-content {
+    width: 100%;
+    padding: 30px;
+  }
+  .carousel-arrows {
+    position: static;
+    margin-top: 10px;
+  }
+  .carousel-nav-wrapper {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+  }
+}
+ 
+ 

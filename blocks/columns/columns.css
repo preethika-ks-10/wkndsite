@@ -1,33 +1,68 @@
+/* 1. Wrapper */
+.columns {
+  display: flex !important;
+  justify-content: center !important;
+  padding: 20px 0 !important;
+}
+
+/* 2. Main Block - This is the key change */
 .columns > div {
-  display: flex;
-  flex-direction: column;
+  display: flex !important;
+  flex-direction: row !important;
+  width: auto !important; /* Let the content define the width */
+  max-width: 850px !important; 
+  margin: 0 auto !important;
+  align-items: stretch !important; /* Keeps the grey box height tied to the image */
+  overflow: hidden !important;
+  background-color: #ededed !important; /* Apply grey to the WHOLE block base */
 }
 
-.columns img {
-  width: 100%;
+/* 3. Image Side - No growing, no shrinking */
+.columns-img-col {
+  flex: 0 1 auto !important; 
+  padding: 0 !important;
+  line-height: 0;
+  background-color: #fff !important; /* Keeps image side clean */
 }
 
-.columns > div > div {
-  order: 1;
+.columns-img-col img {
+  display: block !important;
+  max-height: 250px !important; /* LIMITS the vertical size of the whole block */
+  width: auto !important;
+  object-fit: contain !important; /* Shows the FULL image */
 }
 
-.columns > div > .columns-img-col {
-  order: 0;
+/* 4. Content Side - Grows to fill the height of the image */
+.columns > div > div:not(.columns-img-col) {
+  flex: 1 1 300px !important; /* Minimum width of 300px for text */
+  background-color: #ededed !important;
+  padding: 30px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
 }
 
-.columns > div > .columns-img-col img {
-  display: block;
+/* 5. Typography Fixes to keep it short */
+.columns h2 {
+  font-family: "Georgia", serif !important;
+  font-size: 24px !important;
+  margin-bottom: 8px !important;
+  line-height: 1.1 !important;
 }
 
-@media (width >= 900px) {
-  .columns > div {
-    align-items: center;
-    flex-direction: unset;
-    gap: 24px;
-  }
+.columns p {
+  font-size: 10px !important;
+  line-height: 1.4 !important;
+  margin-bottom: 15px !important;
+  /* If the text is too long, it will scroll rather than break the layout */
+  max-height: 150px; 
+  overflow-y: auto;
+}
 
-  .columns > div > div {
-    flex: 1;
-    order: unset;
-  }
+.columns .button.primary {
+  background-color: #fff200 !important;
+  padding: 10px 20px !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  border-radius: 0 !important;
 }

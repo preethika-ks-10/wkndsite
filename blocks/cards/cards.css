@@ -1,10 +1,11 @@
 .cards > ul {
   list-style: none;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
+  max-width: 900px; /* make layout smaller */
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* smaller cards */
+  gap: 16px; /* reduce space */
 }
 
 .cards > ul > li {
@@ -13,7 +14,8 @@
 }
 
 .cards .cards-card-body {
-  margin: 16px;
+  margin: 12px; /* smaller padding */
+  font-size: 14px;
 }
 
 .cards .cards-card-image {
@@ -24,4 +26,5 @@
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
+  max-height: 160px; /* smaller image */
 }

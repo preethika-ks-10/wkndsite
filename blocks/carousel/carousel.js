@@ -1,91 +1,71 @@
 export default function decorate(block) {
-
   const slides = [...block.children];
-  let current = 0;
-
-  const container = document.createElement("div");
-  container.className = "carousel-container";
-
-  const slidesWrapper = document.createElement("div");
-  slidesWrapper.className = "carousel-slides";
-
-  slides.forEach((row, index) => {
-
-    const cols = row.children;
-
-    const slide = document.createElement("div");
-    slide.className = "carousel-slide";
-
-    if (index === 0) slide.classList.add("active");
-
-    const img = cols[0].querySelector("img");
-
-    slide.style.backgroundImage = `url(${img.src})`;
-
-    slide.innerHTML = `
-      <div class="carousel-content">
-        <h2>${cols[1].textContent}</h2>
-        <p>${cols[2].textContent}</p>
-        <button>${cols[3].textContent}</button>
-      </div>
-    `;
-
-    slidesWrapper.append(slide);
+  const wrapper = document.createElement('div');
+  wrapper.className = 'carousel-wrapper';
+  const track = document.createElement('div');
+  track.className = 'carousel-track';
+ 
+  slides.forEach((row, i) => {
+    const slide = document.createElement('div');
+    slide.className = 'carousel-slide';
+ 
+    // Organizing the image and content
+    [...row.children].forEach((div) => {
+      if (div.querySelector('picture')) {
+        div.className = 'carousel-image';
+      } else {
+        div.className = 'carousel-content';
+      }
+      slide.append(div);
+    });
+ 
+    track.append(slide);
   });
-
-  container.append(slidesWrapper);
-
-  /* arrows */
-
-  const prev = document.createElement("button");
-  prev.className = "carousel-prev";
-  prev.textContent = "←";
-
-  const next = document.createElement("button");
-  next.className = "carousel-next";
-  next.textContent = "→";
-
-  container.append(prev, next);
-
-  /* dots */
-
-  const dots = document.createElement("div");
-  dots.className = "carousel-dots";
-
+ 
+  const navWrapper = document.createElement('div');
+  navWrapper.className = 'carousel-nav-wrapper';
+ 
+  const dotsContainer = document.createElement('div');
+  dotsContainer.className = 'carousel-dots';
+ 
   slides.forEach((_, i) => {
-    const dot = document.createElement("span");
-    if (i === 0) dot.classList.add("active");
-
-    dot.addEventListener("click", () => showSlide(i));
-    dots.append(dot);
+    const dot = document.createElement('span');
+    dot.className = 'carousel-dot';
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => {
+      index = i;
+      updateCarousel();
+    });
+    dotsContainer.append(dot);
   });
-
-  container.append(dots);
-
-  function showSlide(index) {
-
-    const allSlides = container.querySelectorAll(".carousel-slide");
-    const allDots = container.querySelectorAll(".carousel-dots span");
-
-    allSlides.forEach(s => s.classList.remove("active"));
-    allDots.forEach(d => d.classList.remove("active"));
-
-    allSlides[index].classList.add("active");
-    allDots[index].classList.add("active");
-
-    current = index;
+ 
+  const arrowsContainer = document.createElement('div');
+  arrowsContainer.className = 'carousel-arrows';
+  arrowsContainer.innerHTML = `
+    <button class="carousel-btn prev">&#8592;</button>
+    <button class="carousel-btn next">&#8594;</button>
+  `;
+ 
+  navWrapper.append(dotsContainer, arrowsContainer);
+  wrapper.append(track, navWrapper);
+  block.replaceChildren(wrapper);
+ 
+  let index = 0;
+  const totalSlides = track.children.length;
+ 
+  function updateCarousel() {
+    track.style.transform = `translateX(-${index * 100}%)`;
+    const dots = dotsContainer.querySelectorAll('.carousel-dot');
+    dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
   }
-
-  prev.onclick = () => {
-    current = (current - 1 + slides.length) % slides.length;
-    showSlide(current);
-  };
-
-  next.onclick = () => {
-    current = (current + 1) % slides.length;
-    showSlide(current);
-  };
-
-  block.innerHTML = "";
-  block.append(container);
+ 
+  navWrapper.querySelector('.next').addEventListener('click', () => {
+    index = (index + 1) % totalSlides;
+    updateCarousel();
+  });
+ 
+  navWrapper.querySelector('.prev').addEventListener('click', () => {
+    index = (index - 1 + totalSlides) % totalSlides;
+    updateCarousel();
+  });
 }
