@@ -1,43 +1,47 @@
 export default function decorate(block) {
 
-  const rows = [...block.children];
+  const firstRow = block.children[0].children;
+  
+  const logo = firstRow[0].textContent;
+  const navItems = [firstRow[1], firstRow[2], firstRow[3], firstRow[4]];
+  const follow = firstRow[5];
+  const icons = [firstRow[6], firstRow[7], firstRow[8]];
 
-  const logo = rows[0]?.children[0]?.textContent || "WKND";
+  const top = document.createElement("div");
+  top.className = "footer-top";
 
-  const nav = rows[0] ? [...rows[0].querySelectorAll('p')].slice(1,5).map(p => p.textContent) : [];
+  const logoDiv = document.createElement("div");
+  logoDiv.className = "footer-logo";
+  logoDiv.textContent = logo;
 
-  const socialTitle = rows[1]?.querySelector('p')?.textContent || "FOLLOW US";
+  const navDiv = document.createElement("div");
+  navDiv.className = "footer-nav";
+  navItems.forEach(n => {
+    const a = document.createElement("a");
+    a.textContent = n.textContent;
+    a.href = "#";
+    navDiv.append(a);
+  });
 
-  const copyright = rows[2]?.textContent || "";
-  const desc1 = rows[3]?.textContent || "";
-  const desc2 = rows[4]?.textContent || "";
+  const socialDiv = document.createElement("div");
+  socialDiv.className = "footer-social";
 
-  block.innerHTML = `
-    <div class="footer-top">
+  const title = document.createElement("span");
+  title.textContent = follow.textContent;
 
-      <div class="footer-logo">${logo}</div>
+  const iconsBox = document.createElement("div");
+  iconsBox.className = "footer-icons";
 
-      <div class="footer-nav">
-        ${nav.map((n) => `<a href="#">${n}</a>`).join("")}
-      </div>
+  icons.forEach(i => {
+    const a = document.createElement("a");
+    a.textContent = i.textContent;
+    a.href = "#";
+    iconsBox.append(a);
+  });
 
-      <div class="footer-social">
-        <span>${socialTitle}</span>
+  socialDiv.append(title, iconsBox);
 
-        <div class="footer-icons">
-          <a href="#">f</a>
-          <a href="#">🐦</a>
-          <a href="#">📷</a>
-        </div>
+  top.append(logoDiv, navDiv, socialDiv);
 
-      </div>
-
-    </div>
-
-    <div class="footer-bottom">
-      <p>${copyright}</p>
-      <p>${desc1}</p>
-      <p>${desc2}</p>
-    </div>
-  `;
+  block.prepend(top);
 }
