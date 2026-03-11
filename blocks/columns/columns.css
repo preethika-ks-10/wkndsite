@@ -1,75 +1,101 @@
-/* Featured Article Layout */
- 
+/* WKND Featured Article - Compact Magazine Style */
+
 .columns-wrapper {
-  max-width: 1100px; /* Reduces overall width of the block */
-  margin: 0 auto;    /* Centers the block on the page */
-  padding: 0 20px;   /* Optional: adds a little breathing room on the sides */
+  max-width: 800px;   /* Narrower than a full hero banner */
+  margin: 40px auto;  /* Centers it and adds breathing room */
+  padding: 0 20px;
 }
- 
+
 .columns > div {
   display: grid;
-  grid-template-columns: 60% 40%; /* Changed from 60/40 to 70/30 */
+  grid-template-columns: 1fr 0.8fr; /* Image takes slightly more space than text */
   align-items: stretch;
-  gap: 0;
-  min-height: 500px; /* Reduces the height (adjust this value as needed) */
+  background: #f0f0f0; /* Light gray background to match image */
 }
- 
-/* LEFT IMAGE */
- 
+
+/* LEFT IMAGE SECTION */
+.columns > div > div:first-child {
+  line-height: 0; /* Prevents tiny gaps at bottom of image */
+}
+
 .columns > div > div:first-child img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
- 
+
 /* RIGHT CONTENT BOX */
- 
 .columns > div > div:last-child {
-  background: #f2f2f2;
-  padding: 40px; /* Reduced padding from 60px to fit the narrower 30% width */
+  padding: 40px;      /* Generous padding for a clean look */
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
- 
+
 /* FEATURED LABEL */
- 
 .columns > div > div:last-child p:first-child {
-  font-size: 17px; /* Slightly smaller to match reduced scale */
-  font-weight: 450;
-  margin-bottom: 15px;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: #333;
 }
- 
+
 /* TITLE */
- 
 .columns > div > div:last-child h2 {
-  font-size: 40px; /* Reduced size to prevent text overflow in 30% column */
-  font-weight: 300;
-  margin-bottom: 15px;
+  font-size: 26px;    /* Smaller, elegant title */
+  font-weight: 400;
+  margin-bottom: 20px;
   line-height: 1.2;
-  font-family: var(--fontFamilySerif);
+  font-family: "Georgia", serif; /* Serif font for that magazine feel */
+  color: #202020;
 }
- 
+
 /* DESCRIPTION */
- 
 .columns > div > div:last-child p {
-  font-size: 15px; /* Slightly smaller for the tighter box */
+  font-size: 13px;
   line-height: 1.6;
+  color: #555;
+  margin-bottom: 25px;
 }
- 
-/* BUTTON STYLE */
- 
+
+/* YELLOW BUTTON */
 .columns > div > div:last-child a {
   display: inline-block;
-  align-self: flex-start; /* Ensures button doesn't stretch to full width */
-  margin-top: 20px;
-  background-color: var(--brandPrimary, #ffea00);
-  border-radius: 0;
-  color: var(--textColor, #202020);
-  font-size: 13px;
-  font-weight: 600;
-  padding: 0.8em 2em;
+  align-self: flex-start;
+  background-color: #ffea00; /* Signature WKND Yellow */
+  color: #000;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 12px 24px;
   text-transform: uppercase;
   text-decoration: none;
+  letter-spacing: 1px;
+  transition: opacity 0.2s;
+}
+
+.columns > div > div:last-child a:hover {
+  opacity: 0.8;
+}
+/* style the heading */
+
+#need-more-help {
+  background-color: white;
+  font-size: 18px; /* smaller text */
+  font-weight: 600;
+  padding: 10px 0;
+}
+
+/* remove yellow highlight from links */
+
+#need-more-help + p a {
+  background: none;
+  color: #000;
+  text-decoration: none;
+}
+
+/* optional: normal link hover */
+
+#need-more-help + p a:hover {
+  text-decoration: underline;
 }

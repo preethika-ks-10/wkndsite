@@ -323,3 +323,52 @@ main .section.highlight {
   margin: 0;
   padding: 40px 0;
 }
+/* FAQ page layout */
+
+body.faqs main {
+  background: #ffffff;
+}
+
+/* first section layout */
+
+body.faqs .section:first-of-type > div {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* image styling */
+
+body.faqs picture img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Need more help block */
+
+#need-more-help {
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+/* text under help */
+
+#need-more-help + p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* links style */
+
+#need-more-help + p a {
+  background: none;
+  color: #1a73e8;
+  text-decoration: none;
+}
+
+#need-more-help + p a:hover {
+  text-decoration: underline;
+}

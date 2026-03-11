@@ -1,0 +1,49 @@
+/* FAQ page layout inside test block */
+
+.test {
+  background: #ffffff;
+}
+
+/* layout */
+
+.test > div {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* image styling */
+
+.test picture img {
+  width: 100%;   /* use full width */
+  height: auto;
+  display: block;
+}
+
+/* Need more help heading */
+
+.test #need-more-help {
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+/* text under help */
+
+.test #need-more-help + p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* links */
+
+.test #need-more-help + p a {
+  background: none;
+  color: #1a73e8;
+  text-decoration: none;
+}
+
+.test #need-more-help + p a:hover {
+  text-decoration: underline;
+}

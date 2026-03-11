@@ -2,66 +2,58 @@
   border: 1px solid #dadada;
 }
 
-/* spacing between accordion items */
+/* stylelint-disable-next-line no-descending-specificity */
 .accordion details + details {
-  margin-top: 16px;
+  margin-top: 24px;
 }
 
 .accordion details p {
   margin-bottom: 0.8em;
 }
 
-/* accordion question row */
-
 .accordion details summary {
   position: relative;
-  padding: 12px 16px;
-  padding-right: 30px; /* reduced gap for + icon */
+  padding: 0 16px;
+  padding-right: 46px;
   cursor: pointer;
   list-style: none;
-  font-weight: 600;
   overflow: auto;
   transition: background-color 0.2s;
 }
 
-/* hover and focus */
+.accordion details[open] summary {
+  background-color: var(--light-color);
+}
 
 .accordion details summary:focus,
 .accordion details summary:hover {
   background-color: var(--light-color);
 }
 
-/* remove default arrow */
-
 .accordion details summary::-webkit-details-marker {
   display: none;
 }
 
-/* plus icon */
-
 .accordion details summary::after {
-  content: '+';
+  content: '';
   position: absolute;
   top: 50%;
-  right: 8px; /* brings + closer to text */
-  transform: translateY(-50%);
-  font-size: 22px;
-  font-weight: 400;
+  right: 18px;
+  transform: translateY(-50%) rotate(135deg);
+  width: 6px;
+  height: 6px;
+  border: 2px solid;
+  border-width: 2px 2px 0 0;
+  transition: transform 0.2s;
 }
-
-/* minus icon when open */
 
 .accordion details[open] summary::after {
-  content: '−';
+  transform: translateY(-50%) rotate(-45deg);
 }
-
-/* accordion body */
 
 .accordion details .accordion-item-body {
-  padding: 12px 16px;
+  padding: 0 16px;
 }
-
-/* body visible when open */
 
 .accordion details[open] .accordion-item-body {
   border-top: 1px solid #dadada;

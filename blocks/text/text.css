@@ -1,0 +1,11 @@
+/* text block left alignment */
+
+.text {
+  text-align: left;
+}
+
+.text > div {
+  max-width: 750px;   /* keeps text on left instead of stretching */
+  margin-left: 0;
+  margin-right: auto;
+}

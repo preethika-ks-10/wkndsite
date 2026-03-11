@@ -76,7 +76,7 @@ h1::after, .next-adventures-title::after, .adventure-teaser-container h2:first-o
 .adventure-teaser-content a {
   display: inline-block;
   background: #ffea00;
-  color: #000;
+  color: yellow;
   text-decoration: none;
   text-transform: uppercase;
   font-weight: 700;

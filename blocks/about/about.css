@@ -1,0 +1,74 @@
+/* 1. FORCE 4 COLUMNS */
+.cards.about > ul {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 20px !important;
+  list-style: none !important;
+  padding: 0 !important;
+  max-width: 1200px;
+  margin: 40px auto !important;
+}
+
+/* 2. CENTER CONTENT */
+.cards.about ul li {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  background: none !important;
+  border: none !important;
+}
+
+/* 3. THE CIRCULAR IMAGE */
+.cards.about .cards-card-image {
+  width: 150px !important;
+  height: 150px !important;
+  border-radius: 50% !important; /* This makes it round */
+  overflow: hidden !important;
+  margin-bottom: 20px !important;
+}
+
+.cards.about .cards-card-image img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+/* 4. TYPOGRAPHY (NAME & ROLE) */
+.cards.about h3 {
+  font-family: var(--fixed-font-family, serif) !important;
+  font-size: 20px !important;
+  margin: 0 !important;
+  font-weight: 400 !important;
+}
+
+.cards.about p:not(.button-container) {
+  font-size: 11px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  color: #666 !important;
+  margin: 5px 0 !important;
+}
+
+/* 5. SOCIAL ICONS (The Black Squares) */
+/* This targets links at the bottom of the card */
+.cards.about .cards-card-body a {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-color: #202020 !important; /* Black background */
+  color: #ffffff !important;
+  width: 35px !important;
+  height: 35px !important;
+  margin: 5px !important;
+  text-decoration: none !important;
+  font-size: 14px !important;
+}
+
+/* Remove default button styling if AEM turned them into buttons */
+.cards.about .button-container, 
+.cards.about .button {
+  background: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
