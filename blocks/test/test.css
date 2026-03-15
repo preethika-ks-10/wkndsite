@@ -47,3 +47,64 @@
 .test #need-more-help + p a:hover {
   text-decoration: underline;
 }
+/* =========================
+   TABLET
+   ========================= */
+@media (max-width: 1024px) {
+
+  .test > div {
+    grid-template-columns: 1.5fr 1fr;
+    gap: 40px;
+  }
+
+  .test #need-more-help {
+    font-size: 24px;
+  }
+
+  .test #need-more-help + p {
+    font-size: 15px;
+  }
+
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+@media (max-width: 768px) {
+
+  .test > div {
+    grid-template-columns: 1fr; /* stack layout */
+    gap: 30px;
+  }
+
+  .test picture img {
+    width: 100%;
+  }
+
+  .test #need-more-help {
+    font-size: 22px;
+  }
+
+  .test #need-more-help + p {
+    font-size: 14px;
+  }
+
+}
+
+
+/* =========================
+   SMALL MOBILE
+   ========================= */
+@media (max-width: 480px) {
+
+  .test #need-more-help {
+    font-size: 20px;
+  }
+
+  .test #need-more-help + p {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+}

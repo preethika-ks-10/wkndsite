@@ -59,3 +59,82 @@
   border-top: 1px solid #dadada;
   background-color: var(--background-color);
 }
+/* =========================
+   DESKTOP
+   ========================= */
+@media (max-width: 1200px) {
+
+  .accordion details summary {
+    padding: 0 18px;
+    padding-right: 48px;
+    font-size: 15px;
+  }
+
+  .accordion details summary::after {
+    right: 20px;
+  }
+
+  .accordion details .accordion-item-body {
+    padding: 0 18px;
+    font-size: 15px;
+  }
+
+}
+
+
+/* =========================
+   TABLET
+   ========================= */
+@media (max-width: 1024px) {
+
+  .accordion details + details {
+    margin-top: 20px;
+  }
+
+  .accordion details summary {
+    padding: 0 16px;
+    padding-right: 42px;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .accordion details summary::after {
+    right: 16px;
+  }
+
+  .accordion details .accordion-item-body {
+    padding: 0 16px;
+    font-size: 15px;
+  }
+
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+@media (max-width: 768px) {
+
+  .accordion details + details {
+    margin-top: 16px;
+  }
+
+  .accordion details summary {
+    padding: 12px 14px;
+    padding-right: 38px;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .accordion details summary::after {
+    right: 14px;
+    width: 5px;
+    height: 5px;
+  }
+
+  .accordion details .accordion-item-body {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+
+}

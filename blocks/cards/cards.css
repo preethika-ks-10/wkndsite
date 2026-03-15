@@ -1,113 +1,205 @@
-/* --- Section Heading with Yellow Line --- */
-.section > h1,
-.section > h2 {
-  position: relative;
-  padding-bottom: 12px;
-  margin-bottom: 32px;
-  font-family: 'Source Serif Pro', serif;
-  font-size: 32px;
-  font-weight: 400;
-  color: #000;
-  text-transform: none; /* Keep "Recent Articles" casing */
-}
- 
-.section > h1::after,
-.section > h2::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 60px;
-  height: 3px;
-  background-color: #FFEA00;
-}
- 
-/* --- Card Grid Layout --- */
 .cards > ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Exactly 4 columns as per Image 3 */
+  grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
   gap: 24px;
 }
- 
+
 .cards > ul > li {
-  border: none;
-  background-color: transparent;
-  display: block; /* Ensure they are visible */
+  background-color: var(--background-color);
 }
- 
-/* --- Visibility Logic --- */
-.cards li.hidden-card {
-  display: none; /* Initially hidden */
+
+.cards .cards-card-body {
+  margin: 16px;
 }
- 
-.cards.show-all li.hidden-card {
-  display: block; /* Shown when button is clicked */
+
+.cards .cards-card-image {
+  line-height: 0;
 }
- 
-/* --- Card Image --- */
-.cards .cards-card-image img {
+
+.cards > ul > li img {
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
 }
- 
-/* --- Card Content --- */
-.cards .cards-card-body {
-  margin-top: 16px;
-}
- 
-/* H3: Full Heading (No truncation) */
-.cards .cards-card-body h3 {
-  display: block;
-  font-weight: 700;
-  font-size: 18px;
-  text-transform: uppercase;
-  margin: 0 0 10px 0; /* Gap before paragraph */
-  line-height: 1.2;
-  color: #000;
-}
- 
-/* P: Description (Single line with ...) */
-.cards .cards-card-body p {
-  margin: 0;
-  font-size: 14px;
-  color: #666;
-  text-transform: uppercase;
- 
-  /* The Truncation Logic */
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;  
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
- 
-/* --- WKND Yellow Button --- */
-.all-articles-button-container {
-  margin-top: 40px;
-  width: 100%;
-}
- 
-.all-articles-btn {
-  background-color: #FFEA00;
-  border: none;
-  padding: 12px 24px;
-  font-weight: 700;
-  font-size: 14px;
-  cursor: pointer;
-  text-transform: uppercase;
-}
- 
-/* Responsive */
-@media (max-width: 900px) {
-  .cards > ul { grid-template-columns: repeat(2, 1fr); }
-}
- 
-@media (max-width: 600px) {
-  .cards > ul { grid-template-columns: 1fr; }
+/* 1. CONTAINER & HORIZONTAL GRID */
+.cards.aboutus-wrapper {
+  max-width: 1200px;
+  margin: 60px auto !important;
 }
 
- 
+.cards.aboutus > ul {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important; /* Forces 4 columns side-by-side */
+  gap: 30px !important;
+  list-style: none !important;
+  padding: 0 !important;
+}
+
+/* 2. CARD ALIGNMENT */
+.cards.aboutus ul li {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+/* 3. THE ROUND IMAGES */
+.cards.aboutus .cards-card-image {
+  width: 180px !important;
+  height: 180px !important;
+  border-radius: 50% !important; /* Perfect circle */
+  overflow: hidden !important;
+  margin-bottom: 20px !important;
+}
+
+.cards.aboutus .cards-card-image img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+/* 4. TYPOGRAPHY */
+.cards.aboutus h3 {
+  font-family: "Georgia", serif !important;
+  font-size: 20px !important;
+  margin: 10px 0 5px 0 !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cards.aboutus p:not(.button-container) {
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  color: #222 !important;
+  margin-bottom: 15px !important;
+}
+
+/* 5. INDIVIDUAL BLACK ICON BOXES */
+.cards.aboutus .button-container {
+  display: flex !important;
+  gap: 10px !important;
+  justify-content: center !important;
+  background: transparent !important; /* Container stays clear */
+}
+
+.cards.aboutus .button-container a {
+  background-color: #000000 !important; /* Black background only for the icon link */
+  color: #ffffff !important; /* White icon color */
+  width: 30px !important;
+  height: 30px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-decoration: none !important;
+  font-size: 14px !important;
+}
+
+/* Remove default AEM/da.live button padding/styles */
+.cards.aboutus .button-container a.button {
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+}
+/* =========================
+   DESKTOP
+   ========================= */
+@media (max-width: 1200px) {
+
+  .cards.aboutus-wrapper {
+    max-width: 1000px;
+  }
+
+  .cards.aboutus > ul {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+
+  .cards.aboutus .cards-card-image {
+    width: 160px !important;
+    height: 160px !important;
+  }
+
+}
+
+
+/* =========================
+   TABLET
+   ========================= */
+@media (max-width: 1024px) {
+
+  .cards.aboutus-wrapper {
+    max-width: 90%;
+    margin: 50px auto !important;
+  }
+
+  .cards.aboutus > ul {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 25px !important;
+  }
+
+  .cards.aboutus .cards-card-image {
+    width: 150px !important;
+    height: 150px !important;
+  }
+
+  .cards.aboutus h3 {
+    font-size: 18px !important;
+  }
+
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+@media (max-width: 768px) {
+
+  .cards > ul {
+    grid-template-columns: 1fr !important;
+  }
+
+  .cards.aboutus > ul {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+  }
+
+  .cards.aboutus .cards-card-image {
+    width: 140px !important;
+    height: 140px !important;
+  }
+
+  .cards.aboutus h3 {
+    font-size: 17px !important;
+  }
+
+  .cards.aboutus p:not(.button-container) {
+    font-size: 10px !important;
+  }
+
+}
+/* magazine lock badge */
+
+.magazine-badge{
+  position:absolute;
+  top:10px;
+  left:10px;
+  background:yellow;   /* grey background */
+  color:#808080;;           /* makes lock visible */
+  padding:4px 6px;
+  border-radius:4px;
+  font-size:14px;
+}
+.cards.magazine > ul > li::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(120,120,120,0.6); /* grey overlay */
+  z-index: 1;
+}
+
+
+.cards > ul > li{
+  position:relative;
+}

@@ -96,3 +96,57 @@ h1::after, .next-adventures-title::after, .adventure-teaser-container h2:first-o
     padding: 0 20px 30px;
   }
 }
+/* =========================
+   TABLET
+   ========================= */
+@media (max-width: 1024px) {
+
+  .adventure-teaser-image img {
+    height: 380px;
+  }
+
+  .adventure-teaser-content {
+    width: 92%;
+    margin: -120px auto 0;
+    padding: 0 35px 35px;
+  }
+
+  .adventure-teaser-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .adventure-teaser-content p {
+    font-size: 1rem;
+  }
+
+}
+
+
+/* =========================
+   SMALL MOBILE
+   ========================= */
+@media (max-width: 480px) {
+
+  .adventure-teaser-image img {
+    height: 220px;
+  }
+
+  .adventure-teaser-content {
+    margin-top: -20px;
+    padding: 0 16px 25px;
+  }
+
+  .adventure-teaser-content h2 {
+    font-size: 1.4rem;
+  }
+
+  .adventure-teaser-content p {
+    font-size: 0.9rem;
+  }
+
+  .adventure-teaser-content a {
+    padding: 10px 22px;
+    font-size: 0.75rem;
+  }
+
+}

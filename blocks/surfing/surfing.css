@@ -1,0 +1,134 @@
+/* Sidebar Positioning */
+.related-articles-wrapper {
+  position: absolute !important;
+  top: -4900px !important; 
+  right: 0 !important;
+  width: 320px;
+  z-index: 999;
+}
+
+/* Base style for both header and items */
+.related-articles-header,
+.related-articles-item {
+  border-left: 4px solid #e5e5e5;
+  padding: 15px 25px; /* Adds internal space for the yellow box */
+  margin-bottom: 40px;
+}
+
+/* Header specific (No interactivity) */
+.related-articles-header {
+  border-left: none; /* Matches your image where header has no bar */
+  padding-left: 0;
+}
+
+.related-articles-header .related-articles-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111;
+}
+
+/* Article Item Styles */
+.related-articles-item {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+/* THE FULL BLOCK YELLOW INTERACTIVITY */
+.related-articles-item.selected {
+  background-color: #fff100 !important; /* Yellow fills the whole padding area */
+  border-left: 6px solid #111;         /* Thick black bar */
+}
+
+/* Text styles inside the block */
+.related-articles-title {
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #111;
+  margin: 0;
+}
+
+.related-articles-date {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #7a7a7a;
+  margin-top: 8px;
+  display: block;
+}
+
+/* Ensure date turns dark when background is yellow */
+.related-articles-item.selected .related-articles-date {
+  color: #333; 
+}
+/* =========================
+   TABLET
+   ========================= */
+@media (max-width: 1024px) {
+
+  .related-articles-wrapper {
+    width: 280px;
+    right: 20px !important;
+    top: -4300px !important;
+  }
+
+  .related-articles-title {
+    font-size: 16px;
+  }
+
+  .related-articles-date {
+    font-size: 11px;
+  }
+
+  .related-articles-header,
+  .related-articles-item {
+    padding: 14px 20px;
+  }
+
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+@media (max-width: 768px) {
+
+  .related-articles-wrapper {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    width: 100%;
+    margin-top: 40px;
+  }
+
+  .related-articles-header,
+  .related-articles-item {
+    padding: 14px 18px;
+    margin-bottom: 25px;
+  }
+
+  .related-articles-title {
+    font-size: 15px;
+  }
+
+  .related-articles-date {
+    font-size: 10px;
+  }
+
+}
+
+
+/* =========================
+   SMALL MOBILE
+   ========================= */
+@media (max-width: 480px) {
+
+  .related-articles-header,
+  .related-articles-item {
+    padding: 12px 16px;
+  }
+
+  .related-articles-title {
+    font-size: 14px;
+  }
+
+}

@@ -1,0 +1,150 @@
+/* =================================
+   ADVENTURE PAGE – FILTER TABS
+   ================================= */
+
+.tabs > ul {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tabs > ul li {
+  margin: 0;
+}
+
+.tabs > ul a {
+  display: inline-block;
+  padding: 16px 26px;
+  color: #222;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.tabs > ul a.active {
+  background: #222;
+  color: #fff;
+}
+/* =================================
+   NORMAL CONTENT TABS
+   ================================= */
+
+.tabs-nav {
+  display: flex;
+  gap: 28px;
+  margin-bottom: 40px;
+  margin-left: 320px;   /* align tabs with content */
+}
+
+.tabs-nav button {
+  background: transparent;
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 10px 14px;
+}
+
+.tabs-nav button.active {
+  background: #1f1f1f;
+  color: #fff;
+}
+
+.tabs-content {
+  max-width: 760px;
+  margin-left: 320px;
+  margin-bottom: 450px; /* space before footer only for content tabs */
+}
+
+.tabs-panel {
+  display: none;
+}
+
+.tabs-panel.active {
+  display: block;
+}
+/* =========================
+   TABLET
+   ========================= */
+@media (max-width: 1024px) {
+
+  .tabs > ul {
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .tabs > ul a {
+    padding: 14px 22px;
+    font-size: 15px;
+  }
+
+  .tabs-nav {
+    margin-left: 200px;
+    gap: 20px;
+  }
+
+  .tabs-content {
+    margin-left: 200px;
+    max-width: 680px;
+  }
+
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+@media (max-width: 768px) {
+
+  .tabs > ul {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .tabs > ul a {
+    padding: 12px 18px;
+    font-size: 14px;
+  }
+
+  .tabs-nav {
+    margin-left: 0;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .tabs-content {
+    margin-left: 0;
+    max-width: 100%;
+    padding: 0 20px;
+  }
+
+}
+
+
+/* =========================
+   SMALL MOBILE
+   ========================= */
+@media (max-width: 480px) {
+
+  .tabs > ul {
+    gap: 10px;
+  }
+
+  .tabs > ul a {
+    font-size: 13px;
+    padding: 10px 16px;
+  }
+
+  .tabs-nav button {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+
+}

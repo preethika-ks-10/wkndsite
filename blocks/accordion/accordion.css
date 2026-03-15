@@ -67,3 +67,71 @@
   border-top: 1px solid #dadada;
   background-color: var(--background-color);
 }
+/* =========================
+   DESKTOP
+   ========================= */
+@media (max-width: 1200px) {
+
+  .accordion details summary {
+    padding: 14px 18px;
+    padding-right: 34px;
+    font-size: 15px;
+  }
+
+  .accordion details summary::after {
+    font-size: 20px;
+    right: 10px;
+  }
+
+}
+
+/* =========================
+   TABLET
+   ========================= */
+@media (max-width: 1024px) {
+
+  .accordion details summary {
+    padding: 14px 16px;
+    padding-right: 36px;
+    font-size: 15px;
+  }
+
+  .accordion details .accordion-item-body {
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+
+  .accordion details summary::after {
+    font-size: 20px;
+    right: 10px;
+  }
+
+}
+
+/* =========================
+   MOBILE
+   ========================= */
+@media (max-width: 768px) {
+
+  .accordion details {
+    border-radius: 4px;
+  }
+
+  .accordion details summary {
+    padding: 14px 14px;
+    padding-right: 36px;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .accordion details .accordion-item-body {
+    padding: 14px;
+    font-size: 14px;
+  }
+
+  .accordion details summary::after {
+    font-size: 18px;
+    right: 8px;
+  }
+
+}

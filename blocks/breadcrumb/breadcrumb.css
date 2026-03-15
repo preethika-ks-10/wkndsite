@@ -1,0 +1,100 @@
+/* breadcrumb row */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 12px;
+}
+ 
+/* first item (MAGAZINE) */
+.breadcrumb-item:first-of-type {
+  font-weight: 700;   /* bold */
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+ 
+/* second item (ARCTIC SURFING) */
+.breadcrumb-item:last-of-type {
+  font-weight: 400;   /* light */
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+ 
+/* yellow arrow */
+.breadcrumb-arrow {
+  width: 0;
+  height: 0;
+  border-left: 10px solid #f5b400;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+}
+/* =========================
+   DESKTOP
+   ========================= */
+@media (max-width: 1200px) {
+
+  .breadcrumb {
+    gap: 8px;
+    margin-left: 10px;
+  }
+
+  .breadcrumb-item:first-of-type,
+  .breadcrumb-item:last-of-type {
+    font-size: 13px;
+  }
+
+}
+
+
+/* =========================
+   TABLET
+   ========================= */
+@media (max-width: 1024px) {
+
+  .breadcrumb {
+    gap: 8px;
+    margin-left: 8px;
+    flex-wrap: wrap;
+  }
+
+  .breadcrumb-item:first-of-type,
+  .breadcrumb-item:last-of-type {
+    font-size: 13px;
+    letter-spacing: 0.8px;
+  }
+
+  .breadcrumb-arrow {
+    border-left: 8px solid #f5b400;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+  }
+
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+@media (max-width: 768px) {
+
+  .breadcrumb {
+    gap: 6px;
+    margin-left: 6px;
+    flex-wrap: wrap;
+  }
+
+  .breadcrumb-item:first-of-type,
+  .breadcrumb-item:last-of-type {
+    font-size: 12px;
+    letter-spacing: 0.6px;
+  }
+
+  .breadcrumb-arrow {
+    border-left: 7px solid #f5b400;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+  }
+
+}

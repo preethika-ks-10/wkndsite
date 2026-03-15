@@ -1,0 +1,121 @@
+/* 1. THE MAIN CONTAINER */
+.experience.block {
+    max-width: 320px;
+    position: absolute !important;
+    top: 850px !important;    /* This is the line that moves the content UP */
+    left: 120px !important;   /* Moves it slightly right from the edge */
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;               /* Spacing between each info group */
+}
+
+/* 2. THE WRAPPER FOR EACH ITEM (Activity, Difficulty, etc.) */
+/* Targets the first level of divs inside the block */
+.experience.block > div {
+    border-left: 5px solid #f0f0f0; /* The thick vertical grey bar */
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+/* 3. THE LABEL (ACTIVITY, DIFFICULTY) */
+/* Targets the first paragraph in each section */
+.experience.block > div > div:first-child p {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: #999 !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 0 4px 0 !important;
+}
+
+/* 4. THE VALUE (SOCIAL, BEGINNER) */
+/* Targets the second paragraph in each section */
+.experience.block > div > div:last-child p {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #111 !important;
+    text-transform: uppercase;
+    margin: 0 !important;
+}
+
+/* 5. FOOTER TEXT (SHARE THIS ADVENTURE) */
+.experience.block > div:last-child {
+    border-left: none; /* No bar for the footer text */
+    padding-left: 0;
+    margin-top: 10px;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+/* =========================
+   TABLET
+   ========================= */
+@media (max-width: 1024px) {
+
+  .experience.block {
+    top: 780px !important;
+    left: 60px !important;
+    max-width: 280px;
+    gap: 20px;
+  }
+
+  .experience.block > div > div:last-child p {
+    font-size: 15px;
+  }
+
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+@media (max-width: 768px) {
+
+  .experience.block {
+    position: relative !important;   /* prevents overlap on small screens */
+    top: auto !important;
+    left: auto !important;
+    max-width: 100%;
+    margin: 40px 20px;
+    gap: 18px;
+  }
+
+  .experience.block > div {
+    padding-left: 16px;
+  }
+
+  .experience.block > div > div:first-child p {
+    font-size: 10px;
+  }
+
+  .experience.block > div > div:last-child p {
+    font-size: 14px;
+  }
+
+  .experience.block > div:last-child {
+    font-size: 12px;
+  }
+
+}
+
+
+/* =========================
+   SMALL MOBILE
+   ========================= */
+@media (max-width: 480px) {
+
+  .experience.block {
+    margin: 30px 16px;
+    gap: 15px;
+  }
+
+  .experience.block > div > div:last-child p {
+    font-size: 13px;
+  }
+
+}

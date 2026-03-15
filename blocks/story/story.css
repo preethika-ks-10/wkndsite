@@ -1,0 +1,140 @@
+/* 1. The Parent Section - Must be 'relative' to act as the anchor */
+.section.surfing-container {
+    position: relative !important;
+    display: block !important;
+    width: 100%;
+}
+
+/* 2. The Sidebar - This pulls it out of the bottom and puts it at the TOP RIGHT */
+.story.block {
+    position: absolute !important;
+    top: 0 !important;      /* Moves it to the very top of the section */
+    right: 0 !important;    /* Moves it to the right side of the page */
+    width: 320px !important;
+    z-index: 100;
+    margin: 0 !important;
+}
+
+/* 3. Header: "SHARE THIS STORY" style */
+.related-articles-header {
+    margin-bottom: 40px;
+    border-left: none !important; /* No bar for header */
+}
+
+.related-articles-header p {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #111;
+}
+
+/* 4. Article Items with spacing */
+.related-articles-item {
+    border-left: 4px solid #e5e5e5;
+    padding: 20px 25px;      /* Creates the box for the yellow background */
+    margin-bottom: 30px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+/* 5. Selected State: Full Yellow Block Background */
+.related-articles-item.selected {
+    background-color: #fff100 !important; /* Block yellow from your image */
+    border-left: 6px solid #111;         /* Thick black indicator bar */
+}
+
+.related-articles-title {
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #111;
+    margin: 0 0 5px 0;
+}
+
+.related-articles-date {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #7a7a7a;
+    margin: 0;
+}
+/* 2. The Sidebar - Pinning it to the Right and moving it slightly down */
+.story.block {
+    position: absolute !important;
+    
+    /* CHANGE THIS LINE: A positive number moves it down from the top */
+    top: 1000px !important;  /* Adjust this number until it sits where you want */
+    
+    right: 0 !important;
+    width: 320px !important;
+    z-index: 1000;
+    margin: 0 !important;
+}
+/* =========================
+   TABLET
+   ========================= */
+@media (max-width: 1024px) {
+
+  .story.block {
+    width: 280px !important;
+    top: 850px !important;   /* slightly adjusted for tablet */
+    right: 20px !important;
+  }
+
+  .related-articles-title {
+    font-size: 16px;
+  }
+
+  .related-articles-item {
+    padding: 18px 20px;
+  }
+
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+@media (max-width: 768px) {
+
+  .story.block {
+    position: relative !important;   /* prevents layout breaking */
+    top: auto !important;
+    right: auto !important;
+    width: 100% !important;
+    margin-top: 40px !important;
+  }
+
+  .related-articles-header {
+    margin-bottom: 25px;
+  }
+
+  .related-articles-item {
+    padding: 16px 18px;
+    margin-bottom: 20px;
+  }
+
+  .related-articles-title {
+    font-size: 15px;
+  }
+
+  .related-articles-date {
+    font-size: 10px;
+  }
+
+}
+
+
+/* =========================
+   SMALL MOBILE
+   ========================= */
+@media (max-width: 480px) {
+
+  .related-articles-item {
+    padding: 14px 16px;
+  }
+
+  .related-articles-title {
+    font-size: 14px;
+  }
+
+}

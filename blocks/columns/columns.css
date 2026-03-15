@@ -99,3 +99,88 @@
 #need-more-help + p a:hover {
   text-decoration: underline;
 }
+/* =========================
+   DESKTOP
+   ========================= */
+@media (max-width: 1200px) {
+
+  .columns-wrapper {
+    max-width: 700px;
+  }
+
+  .columns > div > div:last-child {
+    padding: 35px;
+  }
+
+  .columns > div > div:last-child h2 {
+    font-size: 24px;
+  }
+
+}
+
+
+/* =========================
+   TABLET
+   ========================= */
+@media (max-width: 1024px) {
+
+  .columns-wrapper {
+    max-width: 650px;
+  }
+
+  .columns > div {
+    grid-template-columns: 1fr 1fr; /* balanced layout */
+  }
+
+  .columns > div > div:last-child {
+    padding: 30px;
+  }
+
+  .columns > div > div:last-child h2 {
+    font-size: 22px;
+  }
+
+  .columns > div > div:last-child p {
+    font-size: 13px;
+  }
+
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+@media (max-width: 768px) {
+
+  .columns-wrapper {
+    max-width: 100%;
+    margin: 30px auto;
+    padding: 0 16px;
+  }
+
+  .columns > div {
+    grid-template-columns: 1fr; /* stack image and text */
+  }
+
+  .columns > div > div:first-child img {
+    height: auto;
+  }
+
+  .columns > div > div:last-child {
+    padding: 25px 20px;
+  }
+
+  .columns > div > div:last-child h2 {
+    font-size: 20px;
+  }
+
+  .columns > div > div:last-child p {
+    font-size: 12px;
+  }
+
+  .columns > div > div:last-child a {
+    font-size: 10px;
+    padding: 10px 20px;
+  }
+
+}
