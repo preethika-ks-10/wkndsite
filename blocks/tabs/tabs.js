@@ -1,11 +1,9 @@
 export default function decorate(block) {
-
   /* ---------- CASE 1 : Adventure page (card filtering) ---------- */
 
   const cardsBlock = document.querySelector('.cards.tabs');
 
   if (cardsBlock) {
-
     const rows = [...block.children];
     const nav = document.createElement('ul');
 
@@ -53,7 +51,6 @@ export default function decorate(block) {
     return;
   }
 
-
   /* ---------- CASE 2 : Normal content tabs ---------- */
 
   const rows = [...block.children];
@@ -65,7 +62,6 @@ export default function decorate(block) {
   content.className = 'tabs-content';
 
   rows.forEach((row, i) => {
-
     const cols = [...row.children];
     if (cols.length < 2) return;
 
@@ -85,7 +81,6 @@ export default function decorate(block) {
     }
 
     btn.addEventListener('click', () => {
-
       block.querySelectorAll('.tabs-nav button')
         .forEach((b) => b.classList.remove('active'));
 
@@ -94,15 +89,12 @@ export default function decorate(block) {
 
       btn.classList.add('active');
       panel.classList.add('active');
-
     });
 
     nav.append(btn);
     content.append(panel);
-
   });
 
   block.textContent = '';
   block.append(nav, content);
-
 }

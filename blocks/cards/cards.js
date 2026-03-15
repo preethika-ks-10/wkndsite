@@ -1,7 +1,6 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 
 export default function decorate(block) {
-
   const isMagazine = block.classList.contains('magazine');
   const isTabs = block.classList.contains('tabs');
 
@@ -9,7 +8,6 @@ export default function decorate(block) {
   const items = [...block.children];
 
   items.forEach((row) => {
-
     const li = document.createElement('li');
 
     // Tabs category logic
@@ -25,7 +23,6 @@ export default function decorate(block) {
     }
 
     [...li.children].forEach((div, index) => {
-
       // Hide category column for tabs
       if (isTabs && index === 2) {
         div.remove();
@@ -35,7 +32,6 @@ export default function decorate(block) {
       if (div.children.length === 1 && div.querySelector('picture')) {
         div.className = 'cards-card-image';
       } else {
-
         div.className = 'cards-card-body';
 
         const title = div.querySelector('h1, h2, h3, h4, h5, h6, a');
@@ -51,33 +47,25 @@ export default function decorate(block) {
     /* -------- MAGAZINE LOCK BADGE -------- */
 
     if (isMagazine) {
-
       const body = li.querySelector('.cards-card-body');
 
       if (body) {
-
         const badge = document.createElement('div');
         badge.className = 'magazine-badge';
         badge.innerHTML = '<span class="lock-icon">🔒</span>';
 
         body.prepend(badge);
-
       }
-
     }
 
     ul.append(li);
-
   });
 
   /* -------- IMAGE OPTIMIZATION -------- */
 
-  ul.querySelectorAll('picture > img').forEach((img) =>
-    img.closest('picture').replaceWith(
-      createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]),
-    ),
-  );
+  ul.querySelectorAll('picture > img').forEach((img) => img.closest('picture').replaceWith(
+    createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]),
+  ));
 
   block.replaceChildren(ul);
-
 }

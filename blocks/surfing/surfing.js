@@ -9,7 +9,7 @@ export default function decorate(block) {
 
     const item = document.createElement('div');
     const isHeader = cols[0].textContent.trim().toUpperCase() === 'SHARE THIS STORY';
-    
+
     // Add a specific class to the header so we can style it differently
     item.className = isHeader ? 'related-articles-header' : 'related-articles-item';
 
@@ -28,7 +28,7 @@ export default function decorate(block) {
     // Only add click functionality if it is NOT the header
     if (!isHeader) {
       item.addEventListener('click', () => {
-        wrapper.querySelectorAll('.related-articles-item').forEach(i => i.classList.remove('selected'));
+        wrapper.querySelectorAll('.related-articles-item').forEach((i) => i.classList.remove('selected'));
         item.classList.add('selected');
       });
     }

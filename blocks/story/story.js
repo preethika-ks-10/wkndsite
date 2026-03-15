@@ -9,7 +9,7 @@ export default function decorate(block) {
 
     const item = document.createElement('div');
     const textContent = cols[0].textContent.trim().toUpperCase();
-    
+
     // Check if the row is the "SHARE THIS STORY" header
     if (textContent === 'SHARE THIS STORY') {
       item.className = 'related-articles-header';
@@ -18,7 +18,7 @@ export default function decorate(block) {
       item.append(headerText);
     } else {
       item.className = 'related-articles-item';
-      
+
       const title = document.createElement('p');
       title.className = 'related-articles-title';
       title.textContent = textContent;
@@ -33,7 +33,7 @@ export default function decorate(block) {
 
       // Add selection interactivity
       item.addEventListener('click', () => {
-        wrapper.querySelectorAll('.related-articles-item').forEach(i => i.classList.remove('selected'));
+        wrapper.querySelectorAll('.related-articles-item').forEach((i) => i.classList.remove('selected'));
         item.classList.add('selected');
       });
     }
