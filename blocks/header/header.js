@@ -1,17 +1,76 @@
 import { getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
-
+ 
 // media query match that indicates mobile/tablet width
 const isDesktop = window.matchMedia('(min-width: 900px)');
-
-/* ---- moved up so they are defined before use ---- */
+ 
+function closeOnEscape(e) {
+  if (e.code === 'Escape') {
+    const nav = document.getElementById('nav');
+    const navSections = nav.querySelector('.nav-sections');
+    if (!navSections) return;
+    const navSectionExpanded = navSections.querySelector('[aria-expanded="true"]');
+    if (navSectionExpanded && isDesktop.matches) {
+      // eslint-disable-next-line no-use-before-define
+      toggleAllNavSections(navSections);
+      navSectionExpanded.focus();
+    } else if (!isDesktop.matches) {
+      // eslint-disable-next-line no-use-before-define
+      toggleMenu(nav, navSections);
+      nav.querySelector('button').focus();
+    }
+  }
+}
+ 
+function closeOnFocusLost(e) {
+  const nav = e.currentTarget;
+  if (!nav.contains(e.relatedTarget)) {
+    const navSections = nav.querySelector('.nav-sections');
+    if (!navSections) return;
+    const navSectionExpanded = navSections.querySelector('[aria-expanded="true"]');
+    if (navSectionExpanded && isDesktop.matches) {
+      // eslint-disable-next-line no-use-before-define
+      toggleAllNavSections(navSections, false);
+    } else if (!isDesktop.matches) {
+      // eslint-disable-next-line no-use-before-define
+      toggleMenu(nav, navSections, false);
+    }
+  }
+}
+ 
+function openOnKeydown(e) {
+  const focused = document.activeElement;
+  const isNavDrop = focused.className === 'nav-drop';
+  if (isNavDrop && (e.code === 'Enter' || e.code === 'Space')) {
+    const dropExpanded = focused.getAttribute('aria-expanded') === 'true';
+    // eslint-disable-next-line no-use-before-define
+    toggleAllNavSections(focused.closest('.nav-sections'));
+    focused.setAttribute('aria-expanded', dropExpanded ? 'false' : 'true');
+  }
+}
+ 
+function focusNavSection() {
+  document.activeElement.addEventListener('keydown', openOnKeydown);
+}
+ 
+/**
+ * Toggles all nav sections
+ * @param {Element} sections The container element
+ * @param {Boolean} expanded Whether the element should be expanded or collapsed
+ */
 function toggleAllNavSections(sections, expanded = false) {
   if (!sections) return;
   sections.querySelectorAll('.nav-sections .default-content-wrapper > ul > li').forEach((section) => {
     section.setAttribute('aria-expanded', expanded);
   });
 }
-
+ 
+/**
+ * Toggles the entire nav
+ * @param {Element} nav The container element
+ * @param {Element} navSections The nav sections within the container element
+ * @param {*} forceExpanded Optional param to force nav expand behavior when not null
+ */
 function toggleMenu(nav, navSections, forceExpanded = null) {
   const expanded = forceExpanded !== null ? !forceExpanded : nav.getAttribute('aria-expanded') === 'true';
   const button = nav.querySelector('.nav-hamburger button');
@@ -19,7 +78,7 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
   nav.setAttribute('aria-expanded', expanded ? 'false' : 'true');
   toggleAllNavSections(navSections, expanded || isDesktop.matches ? 'false' : 'true');
   button.setAttribute('aria-label', expanded ? 'Open navigation' : 'Close navigation');
-
+  // enable nav dropdown keyboard accessibility
   if (navSections) {
     const navDrops = navSections.querySelectorAll('.nav-drop');
     if (isDesktop.matches) {
@@ -36,91 +95,52 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
       });
     }
   }
-
+ 
+  // enable menu collapse on escape keypress
   if (!expanded || isDesktop.matches) {
+    // collapse menu on escape press
     window.addEventListener('keydown', closeOnEscape);
+    // collapse menu on focus lost
     nav.addEventListener('focusout', closeOnFocusLost);
   } else {
     window.removeEventListener('keydown', closeOnEscape);
     nav.removeEventListener('focusout', closeOnFocusLost);
   }
 }
-/* ---- end moved functions ---- */
-
-function closeOnEscape(e) {
-  if (e.code === 'Escape') {
-    const nav = document.getElementById('nav');
-    const navSections = nav.querySelector('.nav-sections');
-    if (!navSections) return;
-    const navSectionExpanded = navSections.querySelector('[aria-expanded="true"]');
-    if (navSectionExpanded && isDesktop.matches) {
-      toggleAllNavSections(navSections);
-      navSectionExpanded.focus();
-    } else if (!isDesktop.matches) {
-      toggleMenu(nav, navSections);
-      nav.querySelector('button').focus();
-    }
-  }
-}
-
-function closeOnFocusLost(e) {
-  const nav = e.currentTarget;
-  if (!nav.contains(e.relatedTarget)) {
-    const navSections = nav.querySelector('.nav-sections');
-    if (!navSections) return;
-    const navSectionExpanded = navSections.querySelector('[aria-expanded="true"]');
-    if (navSectionExpanded && isDesktop.matches) {
-      toggleAllNavSections(navSections, false);
-    } else if (!isDesktop.matches) {
-      toggleMenu(nav, navSections, false);
-    }
-  }
-}
-
-function openOnKeydown(e) {
-  const focused = document.activeElement;
-  const isNavDrop = focused.className === 'nav-drop';
-  if (isNavDrop && (e.code === 'Enter' || e.code === 'Space')) {
-    const dropExpanded = focused.getAttribute('aria-expanded') === 'true';
-    toggleAllNavSections(focused.closest('.nav-sections'));
-    focused.setAttribute('aria-expanded', dropExpanded ? 'false' : 'true');
-  }
-}
-
-function focusNavSection() {
-  document.activeElement.addEventListener('keydown', openOnKeydown);
-}
-
+ 
+/**
+ * loads and decorates the header, mainly the nav
+ * @param {Element} block The header block element
+ */
 export default async function decorate(block) {
+  // load nav as fragment
   const navMeta = getMetadata('nav');
   const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
   const fragment = await loadFragment(navPath);
-
+ 
+  // decorate nav DOM
   block.textContent = '';
   const nav = document.createElement('nav');
   nav.id = 'nav';
-
   while (fragment.firstElementChild) nav.append(fragment.firstElementChild);
-
+ 
   const classes = ['brand', 'sections', 'tools'];
   classes.forEach((c, i) => {
     const section = nav.children[i];
     if (section) section.classList.add(`nav-${c}`);
   });
-
+ 
   const navBrand = nav.querySelector('.nav-brand');
   const brandLink = navBrand.querySelector('.button');
   if (brandLink) {
     brandLink.className = '';
     brandLink.closest('.button-container').className = '';
   }
-
+ 
   const navSections = nav.querySelector('.nav-sections');
-
   if (navSections) {
     navSections.querySelectorAll(':scope .default-content-wrapper > ul > li').forEach((navSection) => {
       if (navSection.querySelector('ul')) navSection.classList.add('nav-drop');
-
       navSection.addEventListener('click', () => {
         if (isDesktop.matches) {
           const expanded = navSection.getAttribute('aria-expanded') === 'true';
@@ -130,89 +150,90 @@ export default async function decorate(block) {
       });
     });
   }
-
-  /* ---------- ACTIVE MENU HIGHLIGHT ---------- */
-
-  const navLinks = nav.querySelectorAll('.nav-sections a');
-
-  navLinks.forEach((link) => {
-    link.addEventListener('click', () => {
-      navLinks.forEach((l) => l.classList.remove('active'));
-      link.classList.add('active');
-    });
-  });
-
-  /* ---------- SIGN IN BUTTON ABOVE NAV ---------- */
-
-  const signIn = document.createElement('div');
-  signIn.className = 'nav-signin';
-  signIn.innerHTML = '<button>Sign In</button>';
-
-  if (navSections) {
-    navSections.prepend(signIn);
-  }
-
-  /* ---------- SEARCH BOX BESIDE SEARCH ICON ---------- */
-
-  const navTools = nav.querySelector('.nav-tools');
-
-  if (navTools) {
-    const searchBox = document.createElement('input');
-    searchBox.type = 'text';
-    searchBox.placeholder = 'Search';
-    searchBox.className = 'nav-search-box';
-
-    navTools.append(searchBox);
-  }
-
-  /* ---------- LOGIN MODAL ---------- */
-
-  const loginModal = document.createElement('div');
-  loginModal.className = 'login-modal';
-
-  loginModal.innerHTML = `
-  <div class="login-box">
-    <h3>Sign In</h3>
-    <input type="text" placeholder="Username" class="login-user">
-    <input type="password" placeholder="Password" class="login-pass">
-    <button class="login-btn">Login</button>
-    <p class="forgot-pass">Forgot Password?</p>
-  </div>
-  `;
-
-  document.body.append(loginModal);
-
-  signIn.querySelector('button').addEventListener('click', () => {
-    loginModal.style.display = 'flex';
-  });
-
-  loginModal.addEventListener('click', (e) => {
-    if (e.target === loginModal) {
-      loginModal.style.display = 'none';
-    }
-  });
-
+ 
+  // hamburger for mobile
   const hamburger = document.createElement('div');
   hamburger.classList.add('nav-hamburger');
-
-  hamburger.innerHTML = `
-  <button type="button" aria-controls="nav" aria-label="Open navigation">
-    <span class="nav-hamburger-icon"></span>
-  </button>
-  `;
-
+  hamburger.innerHTML = `<button type="button" aria-controls="nav" aria-label="Open navigation">
+      <span class="nav-hamburger-icon"></span>
+    </button>`;
   hamburger.addEventListener('click', () => toggleMenu(nav, navSections));
-
   nav.prepend(hamburger);
   nav.setAttribute('aria-expanded', 'false');
-
+  // prevent mobile nav behavior on window resize
   toggleMenu(nav, navSections, isDesktop.matches);
-
   isDesktop.addEventListener('change', () => toggleMenu(nav, navSections, isDesktop.matches));
-
+ 
   const navWrapper = document.createElement('div');
   navWrapper.className = 'nav-wrapper';
-
   navWrapper.append(nav);
   block.append(navWrapper);
 }
+// ================================
+// SIGN IN BUTTON + LOGIN MODAL
+// ================================
+ 
+const signBtn = document.createElement('div');
+signBtn.className = 'signin-btn';
+signBtn.textContent = 'SIGN IN';
+ 
+document.body.appendChild(signBtn);
+ 
+const loginModal = document.createElement('div');
+loginModal.id = 'login-modal';
+ 
+loginModal.innerHTML = `
+<div class="login-box">
+  <span class="close-login">&times;</span>
+  <h2>Sign In</h2>
+  <input type="text" id="loginEmail" placeholder="Email">
+  <input type="password" id="loginPassword" placeholder="Password">
+  <button id="loginBtn">Login</button>
+</div>
+`;
+ 
+document.body.appendChild(loginModal);
+ 
+// ================================
+// OPEN LOGIN MODAL
+// ================================
+signBtn.addEventListener('click', () => {
+  loginModal.style.display = 'flex';
+});
+ 
+// ================================
+// CLOSE LOGIN MODAL
+// ================================
+loginModal.querySelector('.close-login').addEventListener('click', () => {
+  loginModal.style.display = 'none';
+});
+ 
+window.addEventListener('click', (e) => {
+  if (e.target === loginModal) {
+    loginModal.style.display = 'none';
+  }
+});
+ 
+// ================================
+// LOGIN BUTTON ACTION
+// ================================
+const loginBtn = loginModal.querySelector('#loginBtn');
+loginBtn.addEventListener('click', () => {
+  const email = document.getElementById('loginEmail').value;
+  const password = document.getElementById('loginPassword').value;
+  if (email.trim() === '' || password.trim() === '') {
+    // eslint-disable-next-line no-alert
+    alert('Please enter email and password');
+    return;
+  }
+ 
+  // store login state (optional)
+  localStorage.setItem('userLoggedIn', 'true');
+ 
+  // close modal
+  loginModal.style.display = 'none';
+ 
+  // redirect to Home page
+  window.location.href = '/';
+});
+ 

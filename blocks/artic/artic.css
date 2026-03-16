@@ -142,3 +142,86 @@
   }
 
 }
+/* Target the main container of the author block */
+/* This assumes your block has a class like .artic.author or similar on the outer wrapper */
+.artic.author > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* 1. THE IMAGE (First Child Div) */
+.artic.author > div > div:nth-child(1) {
+  flex-shrink: 0;
+}
+
+.artic.author > div > div:nth-child(1) picture img {
+  width: 80px !important;
+  height: 80px !important;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 2. THE NAME & TITLE (Second Child Div) */
+.artic.author > div > div:nth-child(2) {
+  flex-grow: 1; /* Pushes social icons to the right */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.artic.author h2 {
+  margin: 0;
+  font-size: 24px;
+  color: #00334e;
+  font-family: serif;
+}
+
+.artic.author p {
+  margin: 4px 0 0 0;
+  font-size: 13px;
+  text-transform: uppercase;
+  color: #707070;
+  letter-spacing: 1px;
+}
+
+/* 3. THE SOCIAL ICONS (Third Child Div) */
+.artic.author > div > div:nth-child(3) {
+  background-color: #1a1a1a; /* The dark box */
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+}
+
+/* Targeting the <h5> that contains the icons */
+.artic.author h5 {
+  margin: 0;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+/* Targeting the icon spans */
+.artic.author h5 span.icon {
+  display: inline-block;
+  width: 20px;
+  height: 40px;
+  filter: invert(1); /* Makes black icons white to show on dark background */
+}
+
+/* MOBILE VIEW */
+@media (max-width: 768px) {
+  .artic.author > div {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .artic.author > div > div:nth-child(3) {
+    margin-top: 10px;
+  }
+}

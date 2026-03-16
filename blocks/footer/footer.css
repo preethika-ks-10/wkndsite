@@ -1,173 +1,212 @@
-/* 1. Main Footer Container */
+/* FOOTER BACKGROUND */
 footer {
-  background-color: #1e1e1e;
-  color: #ffffff;
-  padding: 60px 40px;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: linear-gradient(90deg, #1d1d1d, #181818);
+  color: #fff;
 }
-
-/* 2. Footer top row layout */
-footer .columns > div > div {
+ 
+/* LINKS */
+footer a {
+  color: #fff;
+}
+ 
+/* MAIN CONTAINER */
+footer .footer > div {
+  max-width: 1100px;
+  margin: auto;
+  padding: 30px 25px;
+}
+ 
+/* TOP ROW */
+footer .column > div {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: 140px auto auto;
   align-items: center;
-  max-width: 1400px;
-  margin: 0 auto 50px auto;
+  column-gap: 40px;
 }
-
-/* 3. Logo */
-footer .columns > div > div > div:nth-child(1) {
-  justify-self: start;
-  font-size: 52px;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: -2px;
+ 
+/* LOGO IMAGE (WKND) */
+footer picture img {
+  width: 120px;
+  height: auto;
+  display: block;
 }
-
-/* 4. Navigation - exact center */
-footer .columns > div > div > div:nth-child(2) {
+ 
+/* SOCIAL ICON BOX */
+footer .footer-social-icons {
+  background: #eee;
+  padding: 6px 12px;
   display: flex;
-  justify-content: center;
-  gap: 80px;
+  gap: 12px;
 }
-
-/* 5. Follow us - right */
-footer .columns > div > div > div:nth-child(3) {
-  justify-self: end;
-  display: flex;
-  align-items: center;
-  gap: 15px;
+ 
+footer .footer-social-icons a {
+  color: #000;
+  font-size: 14px;
 }
-footer .columns > div > div:nth-child(3) p:first-child {
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 15px;
-}
-
-/* Social icon container */
-.social-icon-container {
-  background-color: #ffffff;
-  padding: 10px 15px;
-  display: flex;
-  gap: 20px;
-}
-
-.social-icon-container svg,
-.social-icon-container img {
-  width: 20px;
-  height: 20px;
-  filter: invert(0);
-}
-
-/* 6. Lower Content */
+ 
+/* footer paragraph wrapper */
 footer .default-content-wrapper {
-  max-width: 1200px;
-  margin: 0 auto;
-  text-align: left;
+  width: 100%;
+  margin-top: 12px;
 }
-
+ 
+/* footer paragraph text */
 footer .default-content-wrapper p {
+  font-size: 12px;
+  line-height: 1.6;
+  margin: 0 0 12px;
+  color: #fff;
+}
+ 
+/* COPYRIGHT */
+footer .footer-copy {
+  margin-top: 20px;
+  max-width: 720px;
+}
+ 
+/* COPYRIGHT TEXT */
+footer .footer-copy p {
   font-size: 13px;
   line-height: 1.6;
-  color: #e0e0e0;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
+}
+ 
+/* COPYRIGHT FIRST LINE */
+footer .footer-copy p:first-child {
+  font-size: 14px;
+}
+ 
+/* copyright line */
+footer .default-content-wrapper p:first-child {
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+ 
+/* links */
+footer .default-content-wrapper a {
+  color: #fff;
+  text-decoration: underline;
+}
+ 
+/* NAVIGATION */
+footer .column > div > div:nth-child(2) ul {
+  display: flex;
+  flex-direction: row; /* Horizontal for desktop */
+  gap: 30px; /* Space between links */
+  list-style: none; /* Removes the dots/bullets */
+  margin: 0;
+  padding: 0;
+  align-items: center;
 }
 
-footer .default-content-wrapper a {
-  color: #ffffff;
+/* Specific styling for the list items and links */
+footer .column > div > div:nth-child(2) li,
+footer .column > div > div:nth-child(2) a,
+footer .column > div > div:nth-child(2) p {
+  font-size: 13px;
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+  white-space: nowrap; /* Prevents text from breaking into two lines */
+}
+
+/* Highlight/Underline effect to match image 2 */
+footer .column > div > div:nth-child(2) a:hover {
   text-decoration: underline;
 }
 
-/* remove table borders */
-table, tr, td {
-  border: none !important;
+/* Ensure any active link (like ADVENTURES) is underlined by default if needed */
+.footer-active-link {
+    text-decoration: underline !important;
 }
-/* =========================
-   TABLET
-   ========================= */
-@media (max-width: 1024px) {
-
-  footer {
-    padding: 50px 30px;
-  }
-
-  footer .columns > div > div {
+ 
+/* FOLLOW US */
+footer .column > div > div:nth-child(3) {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+ 
+footer .column > div > div:nth-child(3) p {
+  font-size: 12px;
+  font-weight: 600;
+}
+ 
+/* MOBILE */
+@media (width <= 768px) {
+  footer .column > div {
     grid-template-columns: 1fr;
-    gap: 30px;
-    text-align: center;
+    row-gap: 20px;
   }
-
-  footer .columns > div > div > div:nth-child(1) {
-    justify-self: center;
-    font-size: 44px;
+ 
+  footer picture img {
+    width: 100px;
   }
-
-  footer .columns > div > div > div:nth-child(2) {
-    justify-content: center;
-    gap: 40px;
+ 
+  footer .column > div > div:nth-child(2) {
     flex-wrap: wrap;
   }
-
-  footer .columns > div > div > div:nth-child(3) {
-    justify-self: center;
-  }
-
 }
-
-
-/* =========================
-   MOBILE
-   ========================= */
-@media (max-width: 768px) {
-
-  footer {
-    padding: 40px 20px;
+ 
+/* -------- Tablet -------- */
+@media (width <= 1024px) {
+  footer .column > div {
+    grid-template-columns: 120px 1fr 1fr;
+    column-gap: 25px;
   }
-
-  footer .columns > div > div {
+ 
+  footer picture img {
+    width: 110px;
+  }
+ 
+  footer .column > div > div:nth-child(2) {
+    gap: 35px;
+  }
+ 
+/* stylelint-disable-next-line no-descending-specificity */
+  footer .footer > div {
+    padding: 28px 20px;
+  }
+}
+ 
+ 
+/* -------- Mobile -------- */
+@media (width <= 768px) {
+  footer .column > div {
     grid-template-columns: 1fr;
-    gap: 25px;
-    text-align: center;
+    row-gap: 20px;
   }
-
-  footer .columns > div > div > div:nth-child(1) {
-    font-size: 36px;
+ 
+  footer picture img {
+    width: 100px;
   }
-
-  footer .columns > div > div > div:nth-child(2) {
-    flex-direction: column;
+ 
+  footer .column > div > div:nth-child(2) {
+    flex-wrap: wrap;
     gap: 20px;
   }
-
-  footer .columns > div > div > div:nth-child(3) {
-    flex-direction: column;
-    gap: 12px;
+ 
+  footer .column > div > div:nth-child(3) {
+    justify-content: flex-start;
   }
-
-  .social-icon-container {
-    justify-content: center;
-    padding: 10px 12px;
-    gap: 16px;
-  }
-
-  footer .default-content-wrapper {
-    text-align: center;
-  }
-
 }
-
-
-/* =========================
-   SMALL MOBILE
-   ========================= */
-@media (max-width: 480px) {
-
-  footer .columns > div > div > div:nth-child(1) {
-    font-size: 30px;
+ 
+/* -------- Small Mobile -------- */
+@media (width <= 480px) {
+  footer .footer > div {
+    padding: 24px 16px;
   }
-
+ 
   footer .default-content-wrapper p {
+    font-size: 11px;
+  }
+ 
+  footer .footer-copy p {
     font-size: 12px;
   }
-
+ 
+  footer .footer-social-icons {
+    gap: 10px;
+  }
 }
+ 
