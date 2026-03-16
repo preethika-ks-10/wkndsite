@@ -9,6 +9,7 @@
 
 .cards > ul > li {
   background-color: var(--background-color);
+  position: relative;
 }
 
 .cards .cards-card-body {
@@ -24,6 +25,7 @@
   aspect-ratio: 4 / 3;
   object-fit: cover;
 }
+
 /* 1. CONTAINER & HORIZONTAL GRID */
 .cards.aboutus-wrapper {
   max-width: 1200px;
@@ -63,9 +65,9 @@
 
 /* 4. TYPOGRAPHY */
 .cards.aboutus h3 {
-  font-family: "Georgia", serif !important;
+  font-family: Georgia, serif !important;
   font-size: 20px !important;
-  margin: 10px 0 5px 0 !important;
+  margin: 10px 0 5px !important;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -86,8 +88,8 @@
 }
 
 .cards.aboutus .button-container a {
-  background-color: #000000 !important; /* Black background only for the icon link */
-  color: #ffffff !important; /* White icon color */
+  background-color: #000 !important; /* Black background only for the icon link */
+  color: #fff !important; /* White icon color */
   width: 30px !important;
   height: 30px !important;
   display: flex !important;
@@ -103,11 +105,11 @@
   margin: 0 !important;
   border: none !important;
 }
+
 /* =========================
    DESKTOP
    ========================= */
-@media (max-width: 1200px) {
-
+@media (width <= 1200px) {
   .cards.aboutus-wrapper {
     max-width: 1000px;
   }
@@ -127,8 +129,7 @@
 /* =========================
    TABLET
    ========================= */
-@media (max-width: 1024px) {
-
+@media (width <= 1024px) {
   .cards.aboutus-wrapper {
     max-width: 90%;
     margin: 50px auto !important;
@@ -154,8 +155,7 @@
 /* =========================
    MOBILE
    ========================= */
-@media (max-width: 768px) {
-
+@media (width <= 768px) {
   .cards > ul {
     grid-template-columns: 1fr !important;
   }
@@ -179,6 +179,7 @@
   }
 
 }
+
 /* magazine lock badge */
 
 .magazine-badge{
@@ -191,15 +192,12 @@
   border-radius:4px;
   font-size:14px;
 }
+
 .cards.magazine > ul > li::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(120,120,120,0.6); /* grey overlay */
+  background: rgb(120 120 120 / 60%); /* grey overlay */
   z-index: 1;
 }
 
-
-.cards > ul > li{
-  position:relative;
-}

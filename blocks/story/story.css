@@ -5,16 +5,6 @@
     width: 100%;
 }
 
-/* 2. The Sidebar - This pulls it out of the bottom and puts it at the TOP RIGHT */
-.story.block {
-    position: absolute !important;
-    top: 0 !important;      /* Moves it to the very top of the section */
-    right: 0 !important;    /* Moves it to the right side of the page */
-    width: 320px !important;
-    z-index: 100;
-    margin: 0 !important;
-}
-
 /* 3. Header: "SHARE THIS STORY" style */
 .related-articles-header {
     margin-bottom: 40px;
@@ -48,7 +38,7 @@
     font-weight: 700;
     text-transform: uppercase;
     color: #111;
-    margin: 0 0 5px 0;
+    margin: 0 0 5px;
 }
 
 .related-articles-date {
@@ -57,26 +47,26 @@
     color: #7a7a7a;
     margin: 0;
 }
+
 /* 2. The Sidebar - Pinning it to the Right and moving it slightly down */
 .story.block {
     position: absolute !important;
     
     /* CHANGE THIS LINE: A positive number moves it down from the top */
-    top: 1000px !important;  /* Adjust this number until it sits where you want */
-    
+    top: 1000px !important;
     right: 0 !important;
     width: 320px !important;
     z-index: 1000;
     margin: 0 !important;
 }
+
 /* =========================
    TABLET
    ========================= */
-@media (max-width: 1024px) {
-
+@media (width <= 1024px) {
   .story.block {
     width: 280px !important;
-    top: 850px !important;   /* slightly adjusted for tablet */
+    top: 850px !important;
     right: 20px !important;
   }
 
@@ -87,17 +77,14 @@
   .related-articles-item {
     padding: 18px 20px;
   }
-
 }
-
 
 /* =========================
    MOBILE
    ========================= */
-@media (max-width: 768px) {
-
+@media (width <= 768px) {
   .story.block {
-    position: relative !important;   /* prevents layout breaking */
+    position: relative !important;
     top: auto !important;
     right: auto !important;
     width: 100% !important;
@@ -120,15 +107,12 @@
   .related-articles-date {
     font-size: 10px;
   }
-
 }
-
 
 /* =========================
    SMALL MOBILE
    ========================= */
-@media (max-width: 480px) {
-
+@media (width <= 480px) {
   .related-articles-item {
     padding: 14px 16px;
   }
@@ -136,5 +120,4 @@
   .related-articles-title {
     font-size: 14px;
   }
-
 }

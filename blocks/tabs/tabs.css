@@ -29,6 +29,7 @@
   background: #222;
   color: #fff;
 }
+
 /* =================================
    NORMAL CONTENT TABS
    ================================= */
@@ -69,11 +70,11 @@
 .tabs-panel.active {
   display: block;
 }
+
 /* =========================
    TABLET
    ========================= */
-@media (max-width: 1024px) {
-
+@media (width <= 1024px) {
   .tabs > ul {
     gap: 20px;
     flex-wrap: wrap;
@@ -100,8 +101,7 @@
 /* =========================
    MOBILE
    ========================= */
-@media (max-width: 768px) {
-
+@media (width <= 768px) {
   .tabs > ul {
     flex-wrap: wrap;
     gap: 12px;
@@ -131,8 +131,7 @@
 /* =========================
    SMALL MOBILE
    ========================= */
-@media (max-width: 480px) {
-
+@media (width <= 480px) {
   .tabs > ul {
     gap: 10px;
   }

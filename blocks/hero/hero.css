@@ -42,6 +42,7 @@ h1::after, .next-adventures-title::after, .adventure-teaser-container h2:first-o
   max-width: 1100px;
   margin: -160px auto 0;
   background: #fff;
+
   /* Top padding set to 0 to remove gap above heading */
   padding: 0 50px 40px;
   box-sizing: border-box;
@@ -53,9 +54,10 @@ h1::after, .next-adventures-title::after, .adventure-teaser-container h2:first-o
   font-family: serif;
   font-size: 2.0rem;
   font-weight: 500;
+
   /* Removes default margin that causes the gap */
-  margin: 0 0 15px 0;
-  padding-top: 0px; /* Adjust this to control exact space from box top */
+  margin: 0 0 15px;
+  padding-top: 0; /* Adjust this to control exact space from box top */
   border-bottom: none;
 }
  
@@ -68,7 +70,7 @@ h1::after, .next-adventures-title::after, .adventure-teaser-container h2:first-o
 .adventure-teaser-content p {
   font-size: 1.1rem;
   line-height: 1.6;
-  margin: 0 0 25px 0; /* Align left, space below */
+  margin: 0 0 25px; /* Align left, space below */
   color: #222;
 }
  
@@ -86,21 +88,22 @@ h1::after, .next-adventures-title::after, .adventure-teaser-container h2:first-o
 }
  
 /* 7. Mobile Adjustments */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .adventure-teaser-image img {
     height: 250px;
   }
+
   .adventure-teaser-content {
     width: 95%;
     margin-top: -30px;
     padding: 0 20px 30px;
   }
 }
+
 /* =========================
    TABLET
    ========================= */
-@media (max-width: 1024px) {
-
+@media (width <= 1024px) {
   .adventure-teaser-image img {
     height: 380px;
   }
@@ -125,8 +128,7 @@ h1::after, .next-adventures-title::after, .adventure-teaser-container h2:first-o
 /* =========================
    MOBILE
    ========================= */
-@media (max-width: 768px) {
-
+@media (width <= 768px) {
   .adventure-teaser-image img {
     height: 260px;
   }
@@ -156,8 +158,7 @@ h1::after, .next-adventures-title::after, .adventure-teaser-container h2:first-o
 /* =========================
    SMALL MOBILE
    ========================= */
-@media (max-width: 480px) {
-
+@media (width <= 480px) {
   .adventure-teaser-image img {
     height: 220px;
   }

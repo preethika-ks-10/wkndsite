@@ -323,10 +323,11 @@ main .section.highlight {
   margin: 0;
   padding: 40px 0;
 }
+
 /* FAQ page layout */
 
 body.faqs main {
-  background: #ffffff;
+  background: #fff;
 }
 
 /* first section layout */
@@ -372,6 +373,7 @@ body.faqs picture img {
 #need-more-help + p a:hover {
   text-decoration: underline;
 }
+
 /* =====================================================
 GLOBAL RESPONSIVENESS (SITE LEVEL ONLY)
 This avoids duplicating block CSS rules
@@ -380,8 +382,7 @@ This avoids duplicating block CSS rules
 /* =========================
 TABLET
 ========================= */
-@media (max-width: 1024px) {
-
+@media (width <= 1024px) {
 main > .section > div {
 padding: 0 20px;
 }
@@ -399,8 +400,7 @@ font-size: var(--body-font-size-s);
 /* =========================
 MOBILE
 ========================= */
-@media (max-width: 768px) {
-
+@media (width <= 768px) {
 header {
 height: 56px;
 }
@@ -431,8 +431,7 @@ height: auto;
 /* =========================
 SMALL MOBILE
 ========================= */
-@media (max-width: 480px) {
-
+@media (width <= 480px) {
 main > .section {
 margin: 24px 0;
 }

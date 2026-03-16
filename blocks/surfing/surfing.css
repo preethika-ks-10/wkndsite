@@ -21,6 +21,15 @@
   padding-left: 0;
 }
 
+/* Text styles inside the block */
+.related-articles-title {
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #111;
+  margin: 0;
+}
+
 .related-articles-header .related-articles-title {
   font-size: 14px;
   font-weight: 700;
@@ -39,15 +48,6 @@
   border-left: 6px solid #111;         /* Thick black bar */
 }
 
-/* Text styles inside the block */
-.related-articles-title {
-  font-size: 18px;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #111;
-  margin: 0;
-}
-
 .related-articles-date {
   font-size: 12px;
   text-transform: uppercase;
@@ -60,11 +60,11 @@
 .related-articles-item.selected .related-articles-date {
   color: #333; 
 }
+
 /* =========================
    TABLET
    ========================= */
-@media (max-width: 1024px) {
-
+@media (width <= 1024px) {
   .related-articles-wrapper {
     width: 280px;
     right: 20px !important;
@@ -86,12 +86,10 @@
 
 }
 
-
 /* =========================
    MOBILE
    ========================= */
-@media (max-width: 768px) {
-
+@media (width <= 768px) {
   .related-articles-wrapper {
     position: relative !important;
     top: auto !important;
@@ -116,12 +114,10 @@
 
 }
 
-
 /* =========================
    SMALL MOBILE
    ========================= */
-@media (max-width: 480px) {
-
+@media (width <= 480px) {
   .related-articles-header,
   .related-articles-item {
     padding: 12px 16px;

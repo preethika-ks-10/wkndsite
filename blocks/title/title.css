@@ -13,7 +13,6 @@
   color: white !important;
   font-weight: 500 !important;
   white-space: nowrap !important;
-
   position: relative;
   top: -8px;
 }
@@ -32,11 +31,11 @@
   background: white;
   padding: 10px;
 }
+
 /* =========================
    TABLET
    ========================= */
-@media (max-width: 1024px) {
-
+@media (width <= 1024px) {
   .title-wrapper {
     padding-right: 60px;
   }
@@ -57,8 +56,7 @@
 /* =========================
    MOBILE
    ========================= */
-@media (max-width: 768px) {
-
+@media (width <= 768px) {
   .title-wrapper {
     padding-right: 25px;
   }
@@ -81,8 +79,7 @@
 /* =========================
    SMALL MOBILE
    ========================= */
-@media (max-width: 480px) {
-
+@media (width <= 480px) {
   .title-wrapper {
     padding-right: 15px;
   }

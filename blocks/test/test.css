@@ -1,7 +1,7 @@
 /* FAQ page layout inside test block */
 
 .test {
-  background: #ffffff;
+  background: #fff;
 }
 
 /* layout */
@@ -47,11 +47,11 @@
 .test #need-more-help + p a:hover {
   text-decoration: underline;
 }
+
 /* =========================
    TABLET
    ========================= */
-@media (max-width: 1024px) {
-
+@media (width <= 1024px) {
   .test > div {
     grid-template-columns: 1.5fr 1fr;
     gap: 40px;
@@ -71,8 +71,7 @@
 /* =========================
    MOBILE
    ========================= */
-@media (max-width: 768px) {
-
+@media (width <= 768px) {
   .test > div {
     grid-template-columns: 1fr; /* stack layout */
     gap: 30px;
@@ -96,8 +95,7 @@
 /* =========================
    SMALL MOBILE
    ========================= */
-@media (max-width: 480px) {
-
+@media (width <= 480px) {
   .test #need-more-help {
     font-size: 20px;
   }

@@ -9,11 +9,11 @@
   margin-left: 0;
   margin-right: auto;
 }
+
 /* =========================
    TABLET
    ========================= */
-@media (max-width: 1024px) {
-
+@media (width <= 1024px) {
   .text > div {
     max-width: 680px;
   }
@@ -24,8 +24,7 @@
 /* =========================
    MOBILE
    ========================= */
-@media (max-width: 768px) {
-
+@media (width <= 768px) {
   .text > div {
     max-width: 100%;
     padding: 0 20px; /* adds side spacing */
@@ -37,8 +36,7 @@
 /* =========================
    SMALL MOBILE
    ========================= */
-@media (max-width: 480px) {
-
+@media (width <= 480px) {
   .text > div {
     padding: 0 16px;
   }

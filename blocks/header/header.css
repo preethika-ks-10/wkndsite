@@ -1,17 +1,17 @@
 /* ==============================
    RESET
 ============================== */
- 
+
 body{
   margin:0;
   overflow-x:hidden;
   padding-top:110px;
 }
- 
+
 /* ==============================
    TOP BLACK BAR
 ============================== */
- 
+
 .header-wrapper::before{
   content:"";
   position:fixed;
@@ -22,11 +22,11 @@ body{
   background:#1a1a1a;
   z-index:2000;
 }
- 
+
 /* ==============================
    SIGN IN
 ============================== */
- 
+
 .signin-btn{
   position:fixed;
   top:7px;
@@ -36,15 +36,15 @@ body{
   cursor:pointer;
   z-index:2001;
 }
- 
+
 .signin-btn:hover{
   text-decoration:underline;
 }
- 
+
 /* ==============================
    LANGUAGE
 ============================== */
- 
+
 .nav-tools::before{
   content:"EN-US";
   position:fixed;
@@ -57,11 +57,11 @@ body{
   font-size:14px;
   z-index:2001;
 }
- 
+
 /* ==============================
    HEADER
 ============================== */
- 
+
 .header-wrapper{
   position:fixed;
   top:30px;
@@ -71,11 +71,11 @@ body{
   border-bottom:1px solid #ddd;
   z-index:1000;
 }
- 
+
 /* ==============================
    NAV
 ============================== */
- 
+
 #nav{
   display:flex;
   align-items:center;
@@ -83,17 +83,17 @@ body{
   padding:0 60px;
   gap:20px;
 }
- 
+
 /* ==============================
    LOGO
 ============================== */
- 
+
 .nav-brand img{
   height:38px;
   width:auto;
   display:block;
 }
- 
+
 /* ==============================
    MENU
 ============================== */
@@ -115,9 +115,9 @@ body{
 /* This forces the list items into a horizontal row */
 .nav-sections .default-content-wrapper ul {
   display: flex;
-  flex-direction: row; /* Forces horizontal alignment */
+  flex-direction: row;
   align-items: center;
-  gap: 20px; /* Adjust spacing between items */
+  gap: 20px;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -125,7 +125,7 @@ body{
 
 .nav-sections ul li {
   display: inline-block;
-  white-space: nowrap; /* Prevents text wrapping */
+  white-space: nowrap;
 }
 
 .nav-sections a {
@@ -138,22 +138,16 @@ body{
   transition: .25s;
 }
 
-/* Highlight for the active/specific item like "ADVENTURES" */
-.nav-sections a:hover, 
-.nav-sections li.active a {
-  background: #ffe100;
-}
- 
 /* ==============================
    SEARCH
 ============================== */
- 
+
 .nav-tools{
   margin-left:auto;
   display:flex;
   align-items:center;
 }
- 
+
 .nav-tools a{
   display:flex;
   align-items:center;
@@ -164,26 +158,32 @@ body{
   color:#3e3e3e;
   font-size:14px;
 }
- 
+
 .nav-tools a::after{
   content:"SEARCH";
 }
- 
+
+/* Highlight for the active/specific item like "ADVENTURES" */
+.nav-sections a:hover, 
+.nav-sections li.active a {
+  background: #ffe100;
+}
+
 /* ==============================
    HAMBURGER
 ============================== */
- 
+
 .nav-hamburger{
   display:none;
 }
- 
+
 .nav-hamburger button{
   background:none;
   border:none;
   cursor:pointer;
   padding:10px;
 }
- 
+
 .nav-hamburger-icon{
   display:block;
   width:24px;
@@ -191,7 +191,7 @@ body{
   background:#000;
   position:relative;
 }
- 
+
 .nav-hamburger-icon::before,
 .nav-hamburger-icon::after{
   content:"";
@@ -201,19 +201,19 @@ body{
   height:2px;
   background:#000;
 }
- 
+
 .nav-hamburger-icon::before{
   top:-7px;
 }
- 
+
 .nav-hamburger-icon::after{
   top:7px;
 }
- 
+
 /* ==============================
    LOGIN MODAL
 ============================== */
- 
+
 #login-modal{
   display:none;
   position:fixed;
@@ -226,7 +226,7 @@ body{
   align-items:center;
   z-index:5000;
 }
- 
+
 .login-box{
   background:#fff;
   padding:30px;
@@ -235,7 +235,7 @@ body{
   text-align:center;
   position:relative;
 }
- 
+
 .close-login{
   position:absolute;
   top:10px;
@@ -243,14 +243,14 @@ body{
   font-size:20px;
   cursor:pointer;
 }
- 
+
 .login-box input{
   width:100%;
   padding:10px;
   margin:10px 0;
   border:1px solid #ccc;
 }
- 
+
 .login-box button{
   width:100%;
   padding:10px;
@@ -259,44 +259,34 @@ body{
   font-weight:bold;
   cursor:pointer;
 }
- 
+
 /* ==============================
    MOBILE
 ============================== */
- 
+
 @media (width <=768px){
-/* SIGN IN LEFT */
- 
 .signin-btn{
   left:16px;
   right:auto;
   top:7px;
 }
- 
-/* LANGUAGE RIGHT */
- 
+
 .nav-tools::before{
   right:16px;
   left:auto;
   top:7px;
 }
- 
-/* NAV */
- 
+
 #nav{
   padding:0 20px;
   height:60px;
   gap:15px;
 }
- 
-/* HAMBURGER */
- 
+
 .nav-hamburger{
   display:block;
 }
- 
-/* HIDE MENU */
- 
+
 .nav-sections{
   display:none;
   position:absolute;
@@ -307,69 +297,58 @@ body{
   padding:20px 0;
   border-top:1px solid #ddd;
 }
- 
-/* OPEN MENU */
- 
+
 #nav[aria-expanded="true"] .nav-sections{
   display:block;
 }
- 
-/* MOBILE MENU */
- 
+
 .nav-sections .default-content-wrapper ul{
   flex-direction:column;
   gap:20px;
   padding-left:20px;
 }
- 
-/* SMALL LOGO */
- 
+
 .nav-brand img{
   height:28px;
 }
- 
-/* SMALL SEARCH */
- 
+
 .nav-tools a{
   font-size:12px;
   padding:6px 10px;
 }
- 
 }
+
 /* ==============================
    MOBILE (Vertical)
 ============================== */
 
-@media (max-width: 768px) {
-  /* HIDE MENU BY DEFAULT ON MOBILE */
-  .nav-sections {
-    display: none; 
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    background: #f5f5f5;
-    padding: 20px 0;
-    border-top: 1px solid #ddd;
-    z-index: 999;
-  }
+@media (width <= 768px) {
+.nav-sections {
+  display: none; 
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  background: #f5f5f5;
+  padding: 20px 0;
+  border-top: 1px solid #ddd;
+  z-index: 999;
+}
 
-  /* SHOW MENU WHEN HAMBURGER IS CLICKED */
-  #nav[aria-expanded="true"] .nav-sections {
-    display: block;
-  }
+#nav[aria-expanded="true"] .nav-sections {
+  display: block;
+}
 
-  /* STACK ITEMS VERTICALLY */
-  .nav-sections .default-content-wrapper ul {
-    flex-direction: column; /* This makes it vertical */
-    align-items: flex-start; /* Aligns text to the left */
-    gap: 15px;
-    padding-left: 25px;
-  }
+.nav-sections .default-content-wrapper ul {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+  padding-left: 25px;
+}
 
-  .nav-sections a {
-    display: block;
-    width: 100%;
-    font-size: 16px;
-  }
+.nav-sections a {
+  display: block;
+  width: 100%;
+  font-size: 16px;
+}
 }
