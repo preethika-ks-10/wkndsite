@@ -16,6 +16,14 @@
   margin: 16px;
 }
 
+/* magazine card description text */
+.cards .cards-card-body p {
+  color: #777;        /* grey text */
+  font-size: 13px;    /* smaller font */
+  line-height: 1.4;
+  margin-top: 6px;
+}
+
 .cards .cards-card-image {
   line-height: 0;
 }

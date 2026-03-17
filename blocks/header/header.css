@@ -362,36 +362,22 @@ body{
 }
 
 /* ==============================
-   MOBILE (Vertical)
+   RESPONSIVE FIX (DO NOT REMOVE ABOVE CODE)
 ============================== */
 
-@media (width <= 768px) {
-.nav-sections {
-  display: none; 
-  position: absolute;
-  top: 60px;
-  left: 0;
-  width: 100%;
-  background: #f5f5f5;
-  padding: 20px 0;
-  border-top: 1px solid #ddd;
-  z-index: 999;
-}
+/* Tablet */
+@media (769px <= width <= 1024px){
+  #nav{
+    padding:0 30px;
+    height:65px;
+  }
 
-#nav[aria-expanded="true"] .nav-sections {
-  display: block;
-}
+  .nav-brand img{
+    height:34px;
+  }
 
-.nav-sections .default-content-wrapper ul {
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 15px;
-  padding-left: 25px;
-}
-
-.nav-sections a {
-  display: block;
-  width: 100%;
-  font-size: 16px;
-}
+  .nav-sections a{
+    font-size:13px;
+    padding:8px 12px;
+  }
 }
