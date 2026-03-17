@@ -2,6 +2,7 @@
 
 .text {
   text-align: left;
+  text-align: justify;
 }
 
 .text > div {

@@ -60,7 +60,14 @@
 .tabs-content {
   max-width: 760px;
   margin-left: 320px;
-  margin-bottom: 450px; /* space before footer only for content tabs */
+  margin-bottom: 450px; 
+  text-align: justify;
+}
+
+/* ensure justification works everywhere */
+.tabs-content p {
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .tabs-panel {
