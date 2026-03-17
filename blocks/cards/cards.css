@@ -42,7 +42,7 @@
 
 .cards.aboutus > ul {
   display: grid !important;
-  grid-template-columns: repeat(4, 1fr) !important; /* Forces 4 columns side-by-side */
+  grid-template-columns: repeat(4, 1fr) !important; 
   gap: 30px !important;
   list-style: none !important;
   padding: 0 !important;
@@ -60,7 +60,7 @@
 .cards.aboutus .cards-card-image {
   width: 180px !important;
   height: 180px !important;
-  border-radius: 50% !important; /* Perfect circle */
+  border-radius: 50% !important; 
   overflow: hidden !important;
   margin-bottom: 20px !important;
 }
@@ -80,38 +80,48 @@
   letter-spacing: 1px;
 }
 
-.cards.aboutus p:not(.button-container) {
+/* Targeting the Role/Bio text */
+.cards.aboutus .cards-card-body h5:first-of-type {
   font-size: 11px !important;
   font-weight: 700 !important;
   color: #222 !important;
   margin-bottom: 15px !important;
+  text-transform: uppercase;
 }
 
-/* 5. INDIVIDUAL BLACK ICON BOXES */
-.cards.aboutus .button-container {
-  display: flex !important;
-  gap: 10px !important;
+/* 5. THE BLACK ICON BAR */
+
+/* This targets the h5 that contains your social icons */
+.cards.aboutus .cards-card-body h5:last-of-type {
+  display: inline-flex !important;
+  background-color: #1a1a1a !important; /* Solid black/dark grey */
+  padding: 8px 16px !important;
+  gap: 15px !important;
   justify-content: center !important;
-  background: transparent !important; /* Container stays clear */
+  align-items: center !important;
+  margin-top: 5px !important;
+  border-radius: 2px;
 }
 
-.cards.aboutus .button-container a {
-  background-color: #000 !important; /* Black background only for the icon link */
-  color: #fff !important; /* White icon color */
-  width: 30px !important;
-  height: 30px !important;
+/* Styling the icons/links inside the bar */
+.cards.aboutus .cards-card-body h5:last-of-type a,
+.cards.aboutus .cards-card-body h5:last-of-type span {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
+  color: #fff !important;
   text-decoration: none !important;
-  font-size: 14px !important;
-}
-
-/* Remove default AEM/da.live button padding/styles */
-.cards.aboutus .button-container a.button {
+  background: transparent !important;
   padding: 0 !important;
   margin: 0 !important;
-  border: none !important;
+}
+
+/* Force the SVG icons to be white and a consistent size */
+.cards.aboutus .cards-card-body h5:last-of-type img,
+.cards.aboutus .cards-card-body h5:last-of-type svg {
+  filter: brightness(0) invert(1); /* Turns dark icons white */
+  width: 16px !important;
+  height: 16px !important;
 }
 
 /* =========================
